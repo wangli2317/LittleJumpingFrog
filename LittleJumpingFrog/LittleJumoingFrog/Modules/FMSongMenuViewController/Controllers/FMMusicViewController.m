@@ -141,6 +141,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 
                 [weakSelf setupMusicViewWithMusicEntity:_musicEntities[currentIndex]];
                 [weakSelf setupStreamer];
+                
+                [GCDQueue executeInMainQueue:^{
+    
+                    [weakSelf updateMusicsCellsState];
+    
+                }];
+             
             }];
         }
     }
@@ -313,7 +320,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }
     if (_musicCycleType == MusicCycleTypeShuffle && _musicEntities.count > 2) {
         [self setupRandomMusicIfNeed];
-        [self setupStreamer];
     } else {
         NSInteger firstIndex = 0;
         if (_currentIndex == firstIndex || [self currentIndexIsInvalid]) {
@@ -331,7 +337,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }
     if (_musicCycleType == MusicCycleTypeShuffle && _musicEntities.count > 2) {
         [self setupRandomMusicIfNeed];
-        [self setupStreamer];
     } else {
         [self checkNextIndexValue];
     }
@@ -509,7 +514,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         case DOUAudioStreamerError:
             break;
     }
-    [self updateMusicsCellsState];
 }
 
 # pragma mark - Favorite Music
