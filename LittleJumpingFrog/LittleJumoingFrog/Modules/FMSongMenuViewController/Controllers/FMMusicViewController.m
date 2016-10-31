@@ -129,7 +129,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
     if ([_musicEntities[currentIndex] isKindOfClass:[FMMusicModel class]]) {
         
-        [self setupMusicViewWithMusicEntity:_musicEntities[currentIndex]];
         [self setupStreamer];
     }else{
         
@@ -139,7 +138,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
             [_delegate playMusicCellDataWithCurrentIndex:_currentIndex setupMusicEntity:^( ) {
                 
-                [weakSelf setupMusicViewWithMusicEntity:_musicEntities[currentIndex]];
                 [weakSelf setupStreamer];
                 
                 [GCDQueue executeInMainQueue:^{
@@ -304,10 +302,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (IBAction)didChangeMusicSliderValue:(id)sender {
-    if (_streamer.status == DOUAudioStreamerFinished) {
-        _streamer = nil;
-        [self createStreamer];
-    }
+//    if (_streamer.status == DOUAudioStreamerFinished) {
+//        _streamer = nil;
+//        [self createStreamer];
+//    }
     
     [_streamer setCurrentTime:[_streamer duration] * _musicSlider.value];
     [self updateProgressLabelValue];
@@ -549,16 +547,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 # pragma mark - HUD
 
 - (void)showMiddleHint:(NSString *)hint {
-//    UIView *view = [[UIApplication sharedApplication].delegate window];
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-//    hud.userInteractionEnabled = NO;
-//    hud.mode = MBProgressHUDModeText;
-//    hud.labelText = hint;
-//    hud.labelFont = [UIFont systemFontOfSize:15];
-//    hud.margin = 10.f;
-//    hud.yOffset = 0;
-//    hud.removeFromSuperViewOnHide = YES;
-//    [hud hide:YES afterDelay:2];    
     [FMPromptTool promptModeText:hint afterDelay:2];
 }
 
