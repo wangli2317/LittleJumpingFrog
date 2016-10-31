@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>cm2_lay_icn_fav</string>
+		<key>title</key>
+		<string>收藏</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>cm2_lay_icn_alb</string>
+		<key>title</key>
+		<string>专辑</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>cm2_lay_icn_dld</string>
+		<key>title</key>
+		<string>下载</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>cm2_lay_icn_artist</string>
+		<key>title</key>
+		<string>歌手</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>cm2_lay_icn_dlt</string>
+		<key>title</key>
+		<string>删除</string>
+	</dict>
+</array>
+</plist>

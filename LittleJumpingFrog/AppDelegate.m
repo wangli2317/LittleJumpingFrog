@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "FMConfigure.h"
+#import "FMTabBarViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +20,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:Screen];
+    
+    
+    FMTabBarViewController *viewController = [[FMTabBarViewController alloc] init];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
+    //设置后台响应
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [session setActive:YES error:nil];
+    
+    
+    // 获取沙盒主目录路径
+//    NSString *homeDir = NSHomeDirectory();
+//    // 获取Documents目录路径
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *docDir = [paths objectAtIndex:0];
+    // 获取Caches目录路径
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *cachesDir = [paths objectAtIndex:0];
+//    // 获取tmp目录路径
+//    NSString *tmpDir =  NSTemporaryDirectory();
+    
     return YES;
 }
 
