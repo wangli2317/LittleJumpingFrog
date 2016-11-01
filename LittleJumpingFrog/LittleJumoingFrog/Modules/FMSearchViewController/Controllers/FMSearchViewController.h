@@ -6,8 +6,8 @@
 //  Copyright © 2016年 WangGang. All rights reserved.
 //
 
-#import "CustomNormalContentViewController.h"
+#import "PYSearchViewController.h"
 
-@interface FMSearchViewController : CustomNormalContentViewController
+@interface FMSearchViewController : PYSearchViewController
 
 @end

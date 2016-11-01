@@ -37,13 +37,13 @@
     
     __weak typeof(self) weakSelf = self;
     //监测网络变化
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     //检测网络连接的单例,网络变化时的回调方法
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status <= 0) {
-            [FMPromptTool promptModeText:@"没有网络了" afterDelay:2];
-        }else{
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        if (status <= 0) {
+//            [FMPromptTool promptModeText:@"没有网络了" afterDelay:2];
+//        }else{
             MBProgressHUD *netPrompt = [FMPromptTool promptModeIndeterminatetext:@"正在加载中"];
             //加载数据
 
@@ -58,8 +58,8 @@
                 [netPrompt removeFromSuperview];
                 NSLog(@"%@",error);
             }];
-        }
-    }];
+//        }
+//    }];
 }
 
 - (void)netWorkToolDownloadWithUrl:(NSString *)string targetPath:(NSSearchPathDirectory)path DomainMask:(NSSearchPathDomainMask)mask endPath:(void(^)(NSURL *endPath))endPath{

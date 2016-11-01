@@ -49,6 +49,10 @@ while (0);                                                          \
 
 - (void)setup {
     
+    if (IOS_VERSION >= 7.0f) {
+        self.edgesForExtendedLayout           = UIRectEdgeNone;
+    }
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.width                                = [UIScreen mainScreen].bounds.size.width;
     self.height                               = [UIScreen mainScreen].bounds.size.height;

@@ -112,7 +112,7 @@
         
         [GCDQueue executeInMainQueue:^{
         
-            weakSelf.publicTableView.frame = CGRectMake(0,40, getScreenWidth(), getScreenHeight());
+            weakSelf.publicTableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
     
             weakSelf.headView.frame =CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
             

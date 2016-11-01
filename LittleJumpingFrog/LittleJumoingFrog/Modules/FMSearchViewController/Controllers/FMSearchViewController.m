@@ -9,29 +9,52 @@
 #import "FMSearchViewController.h"
 
 @interface FMSearchViewController ()
-
 @end
 
 @implementation FMSearchViewController
+
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self loadSearchData];
+    }
+    return self;
+}
+
+- (void)loadSearchData{
+    [[FMNetManager shareNetManager] netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.search.hot",@"page_num":@"15") response:^(id response) {
+        NSMutableArray *hotSeaches = [NSMutableArray array];
+        
+        for (NSDictionary *dict in response[@"result"]) {
+            [hotSeaches addObject:dict[@"word"]];
+        }
+        [self setValue:hotSeaches forKey:@"hotSearches"];
+    }];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - PYSearchViewControllerDelegate
+- (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText{
+    
+    if (searchText.length) { // 与搜索条件再搜索
+        // 根据条件发送查询（这里模拟搜索）
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜素完毕
+            // 显示建议搜索结果
+            NSMutableArray *searchSuggestionsM = [NSMutableArray array];
+            for (int i = 0; i < arc4random_uniform(5) + 10; i++) {
+                NSString *searchSuggestion = [NSString stringWithFormat:@"搜索建议 %d", i];
+                [searchSuggestionsM addObject:searchSuggestion];
+            }
+            // 返回
+            searchViewController.searchSuggestions = searchSuggestionsM;
+        });
+    }
 }
-*/
 
 @end

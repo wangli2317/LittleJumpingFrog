@@ -27,11 +27,7 @@
 - (void)setup{
     
     [super setup];
-    
-    if (IOS_VERSION >= 7.0f) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    
+        
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
