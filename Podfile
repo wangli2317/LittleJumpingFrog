@@ -14,4 +14,5 @@ target 'LittleJumpingFrog' do
     pod 'GYDataCenter'
     pod 'SSZipArchive'
     pod 'FMDB'
+    pod 'PYSearch'
 end

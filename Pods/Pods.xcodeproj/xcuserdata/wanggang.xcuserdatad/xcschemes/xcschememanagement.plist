@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PYSearch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LittleJumpingFrog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,16 +107,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E1760B24F28710932FDB07BA7568957</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>52901DD8C0CC92F27A1ED34EC4F15F66</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
@@ -122,17 +117,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E2F21595420A2F5DDA4452E5F181D38</key>
+		<key>76522905C0D650F61A3337A5161CC595</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75FF7157F234616C3C22094B8C287A5B</key>
+		<key>76786AC329339D8EEE7FE8D43C3D6261</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89171F24E3F1267CD360C2E49FEF2D66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,7 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D3E6172717D69445FC4EFEFC4A2B8517</key>
+		<key>AD304B33201C5F7233E2ED4C95D1D3A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC4682410F234100049DB68A361E5308</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D19DD1D70EE423874995D5F8B4AD4174</key>
 		<dict>
 			<key>primary</key>
 			<true/>

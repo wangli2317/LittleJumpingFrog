@@ -8,7 +8,7 @@
 
 #import "FMSearchViewController.h"
 
-@interface FMSearchViewController ()
+@interface FMSearchViewController ()<UIGestureRecognizerDelegate>
 @end
 
 @implementation FMSearchViewController
@@ -45,6 +45,11 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)useInteractivePopGestureRecognizer {
+    
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
 
 #pragma mark - PYSearchViewControllerDelegate
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText{

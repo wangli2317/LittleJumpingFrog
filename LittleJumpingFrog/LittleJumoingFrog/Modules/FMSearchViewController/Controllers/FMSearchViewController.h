@@ -6,7 +6,7 @@
 //  Copyright © 2016年 WangGang. All rights reserved.
 //
 
-#import "PYSearchViewController.h"
+#import <PYSearch.h>
 
 @interface FMSearchViewController : PYSearchViewController
 
