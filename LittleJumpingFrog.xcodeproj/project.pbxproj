@@ -69,6 +69,17 @@
 		324B19D11DA7818A003959FE /* FMBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 324B19D01DA7818A003959FE /* FMBadgeView.m */; };
 		325657711DC720B70098E23E /* FMRankSonglistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 325657701DC720B70098E23E /* FMRankSonglistModel.m */; };
 		325657741DC722B20098E23E /* FMRankSongListTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 325657731DC722B20098E23E /* FMRankSongListTableHeaderView.m */; };
+		325B27581EA9DC6B00AE83A3 /* FMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B27571EA9DC6B00AE83A3 /* FMDataManager.m */; };
+		325B275C1EA9DF8400AE83A3 /* NSObject+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B275B1EA9DF8400AE83A3 /* NSObject+Utils.m */; };
+		325B27601EA9DFCF00AE83A3 /* DTSApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B275F1EA9DFCF00AE83A3 /* DTSApplication.m */; };
+		325B27691EA9DFF900AE83A3 /* CoreStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B27631EA9DFF900AE83A3 /* CoreStatus.m */; };
+		325B27711EA9E1E000AE83A3 /* DTSViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B276C1EA9E1E000AE83A3 /* DTSViewManager.m */; };
+		325B27721EA9E1E000AE83A3 /* DTSWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B276E1EA9E1E000AE83A3 /* DTSWeakReference.m */; };
+		325B27731EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B27701EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.m */; };
+		325B27771EA9E51600AE83A3 /* MBProgressHUD+DTS.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B27761EA9E51600AE83A3 /* MBProgressHUD+DTS.m */; };
+		325B277F1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277A1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m */; };
+		325B27801EA9F01F00AE83A3 /* NSDictionary+json.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277C1EA9F01F00AE83A3 /* NSDictionary+json.m */; };
+		325B27811EA9F01F00AE83A3 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277E1EA9F01F00AE83A3 /* NSDictionary+Utils.m */; };
 		326825381D9B7C7D0049774C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 326825371D9B7C7D0049774C /* main.m */; };
 		3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268253A1D9B7C7D0049774C /* AppDelegate.m */; };
 		326825431D9B7C7D0049774C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 326825421D9B7C7D0049774C /* Assets.xcassets */; };
@@ -89,7 +100,7 @@
 		32FFB5E11DC87BC200F5D4AE /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB5D91DC87BC200F5D4AE /* PYSearchViewController.m */; };
 		32FFB5E21DC87BC200F5D4AE /* UIColor+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB5DB1DC87BC200F5D4AE /* UIColor+PYExtension.m */; };
 		32FFB5E31DC87BC200F5D4AE /* UIView+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB5DD1DC87BC200F5D4AE /* UIView+PYExtension.m */; };
-		938295F69AC934B41C2EDF74 /* libPods-LittleJumpingFrog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E883B68E4778346F79232 /* libPods-LittleJumpingFrog.a */; };
+		D7188C3F0BE026918942C362 /* libPods-LittleJumpingFrog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E563667D5FABC536ACFAED5 /* libPods-LittleJumpingFrog.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +228,31 @@
 		325657701DC720B70098E23E /* FMRankSonglistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRankSonglistModel.m; sourceTree = "<group>"; };
 		325657721DC722B20098E23E /* FMRankSongListTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRankSongListTableHeaderView.h; sourceTree = "<group>"; };
 		325657731DC722B20098E23E /* FMRankSongListTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRankSongListTableHeaderView.m; sourceTree = "<group>"; };
+		325B27561EA9DC6B00AE83A3 /* FMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDataManager.h; sourceTree = "<group>"; };
+		325B27571EA9DC6B00AE83A3 /* FMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDataManager.m; sourceTree = "<group>"; };
+		325B275A1EA9DF8400AE83A3 /* NSObject+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Utils.h"; sourceTree = "<group>"; };
+		325B275B1EA9DF8400AE83A3 /* NSObject+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Utils.m"; sourceTree = "<group>"; };
+		325B275E1EA9DFCF00AE83A3 /* DTSApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSApplication.h; sourceTree = "<group>"; };
+		325B275F1EA9DFCF00AE83A3 /* DTSApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSApplication.m; sourceTree = "<group>"; };
+		325B27621EA9DFF900AE83A3 /* CoreStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatus.h; sourceTree = "<group>"; };
+		325B27631EA9DFF900AE83A3 /* CoreStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreStatus.m; sourceTree = "<group>"; };
+		325B27651EA9DFF900AE83A3 /* CoreNetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreNetworkStatus.h; sourceTree = "<group>"; };
+		325B27661EA9DFF900AE83A3 /* CoreStatusProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatusProtocol.h; sourceTree = "<group>"; };
+		325B27681EA9DFF900AE83A3 /* CoreStatusSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatusSingleton.h; sourceTree = "<group>"; };
+		325B276B1EA9E1E000AE83A3 /* DTSViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSViewManager.h; sourceTree = "<group>"; };
+		325B276C1EA9E1E000AE83A3 /* DTSViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSViewManager.m; sourceTree = "<group>"; };
+		325B276D1EA9E1E000AE83A3 /* DTSWeakReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSWeakReference.h; sourceTree = "<group>"; };
+		325B276E1EA9E1E000AE83A3 /* DTSWeakReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSWeakReference.m; sourceTree = "<group>"; };
+		325B276F1EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+DTSWeakReference.h"; sourceTree = "<group>"; };
+		325B27701EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+DTSWeakReference.m"; sourceTree = "<group>"; };
+		325B27751EA9E51600AE83A3 /* MBProgressHUD+DTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+DTS.h"; sourceTree = "<group>"; };
+		325B27761EA9E51600AE83A3 /* MBProgressHUD+DTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+DTS.m"; sourceTree = "<group>"; };
+		325B27791EA9F01F00AE83A3 /* NSDictionary+DTSJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTSJson.h"; sourceTree = "<group>"; };
+		325B277A1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTSJson.m"; sourceTree = "<group>"; };
+		325B277B1EA9F01F00AE83A3 /* NSDictionary+json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+json.h"; sourceTree = "<group>"; };
+		325B277C1EA9F01F00AE83A3 /* NSDictionary+json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+json.m"; sourceTree = "<group>"; };
+		325B277D1EA9F01F00AE83A3 /* NSDictionary+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utils.h"; sourceTree = "<group>"; };
+		325B277E1EA9F01F00AE83A3 /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		326825331D9B7C7D0049774C /* LittleJumpingFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleJumpingFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		326825371D9B7C7D0049774C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		326825391D9B7C7D0049774C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -257,9 +293,9 @@
 		32FFB5DB1DC87BC200F5D4AE /* UIColor+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYExtension.m"; sourceTree = "<group>"; };
 		32FFB5DC1DC87BC200F5D4AE /* UIView+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYExtension.h"; sourceTree = "<group>"; };
 		32FFB5DD1DC87BC200F5D4AE /* UIView+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYExtension.m"; sourceTree = "<group>"; };
-		462E870C25E3300B01FE226F /* Pods-LittleJumpingFrog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleJumpingFrog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog.debug.xcconfig"; sourceTree = "<group>"; };
-		606E883B68E4778346F79232 /* libPods-LittleJumpingFrog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleJumpingFrog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D454AC3E314E34BDDDF67A09 /* Pods-LittleJumpingFrog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleJumpingFrog.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog.release.xcconfig"; sourceTree = "<group>"; };
+		5E563667D5FABC536ACFAED5 /* libPods-LittleJumpingFrog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LittleJumpingFrog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAEB208CFE7CA55AFB47E40 /* Pods-LittleJumpingFrog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleJumpingFrog.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog.release.xcconfig"; sourceTree = "<group>"; };
+		F1A094DA0DA9CB4D1CAFE558 /* Pods-LittleJumpingFrog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleJumpingFrog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +303,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				938295F69AC934B41C2EDF74 /* libPods-LittleJumpingFrog.a in Frameworks */,
+				D7188C3F0BE026918942C362 /* libPods-LittleJumpingFrog.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,13 +719,103 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		325B27551EA9DC5300AE83A3 /* FMDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				325B27561EA9DC6B00AE83A3 /* FMDataManager.h */,
+				325B27571EA9DC6B00AE83A3 /* FMDataManager.m */,
+			);
+			path = FMDataManager;
+			sourceTree = "<group>";
+		};
+		325B27591EA9DF8400AE83A3 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				325B275A1EA9DF8400AE83A3 /* NSObject+Utils.h */,
+				325B275B1EA9DF8400AE83A3 /* NSObject+Utils.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		325B275D1EA9DFCF00AE83A3 /* DTSApplication */ = {
+			isa = PBXGroup;
+			children = (
+				325B275E1EA9DFCF00AE83A3 /* DTSApplication.h */,
+				325B275F1EA9DFCF00AE83A3 /* DTSApplication.m */,
+			);
+			path = DTSApplication;
+			sourceTree = "<group>";
+		};
+		325B27611EA9DFF900AE83A3 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				325B27621EA9DFF900AE83A3 /* CoreStatus.h */,
+				325B27631EA9DFF900AE83A3 /* CoreStatus.m */,
+				325B27641EA9DFF900AE83A3 /* Lib */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		325B27641EA9DFF900AE83A3 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				325B27651EA9DFF900AE83A3 /* CoreNetworkStatus.h */,
+				325B27661EA9DFF900AE83A3 /* CoreStatusProtocol.h */,
+				325B27671EA9DFF900AE83A3 /* Singleton */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		325B27671EA9DFF900AE83A3 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				325B27681EA9DFF900AE83A3 /* CoreStatusSingleton.h */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		325B276A1EA9E1E000AE83A3 /* DTSViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				325B276B1EA9E1E000AE83A3 /* DTSViewManager.h */,
+				325B276C1EA9E1E000AE83A3 /* DTSViewManager.m */,
+				325B276D1EA9E1E000AE83A3 /* DTSWeakReference.h */,
+				325B276E1EA9E1E000AE83A3 /* DTSWeakReference.m */,
+				325B276F1EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.h */,
+				325B27701EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.m */,
+			);
+			path = DTSViewManager;
+			sourceTree = "<group>";
+		};
+		325B27741EA9E51600AE83A3 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				325B27751EA9E51600AE83A3 /* MBProgressHUD+DTS.h */,
+				325B27761EA9E51600AE83A3 /* MBProgressHUD+DTS.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		325B27781EA9F01F00AE83A3 /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				325B27791EA9F01F00AE83A3 /* NSDictionary+DTSJson.h */,
+				325B277A1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m */,
+				325B277B1EA9F01F00AE83A3 /* NSDictionary+json.h */,
+				325B277C1EA9F01F00AE83A3 /* NSDictionary+json.m */,
+				325B277D1EA9F01F00AE83A3 /* NSDictionary+Utils.h */,
+				325B277E1EA9F01F00AE83A3 /* NSDictionary+Utils.m */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
 		3268252A1D9B7C7D0049774C = {
 			isa = PBXGroup;
 			children = (
 				326825351D9B7C7D0049774C /* LittleJumpingFrog */,
 				326825341D9B7C7D0049774C /* Products */,
-				DEB21B665D0A7ED6AB92B464 /* Pods */,
-				CABC57AC37C0599874527FDF /* Frameworks */,
+				F44FB3540EF9AD2DB698F21C /* Pods */,
+				3DB8EDEA54EC9E800E2EB524 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -730,7 +856,6 @@
 				3268254F1D9B9A540049774C /* Category */,
 				326825501D9B9A540049774C /* Common */,
 				326825511D9B9A540049774C /* Modules */,
-				32061D8B1D9BAA3300E07438 /* FMNetManager */,
 				326825391D9B7C7D0049774C /* AppDelegate.h */,
 				3268253A1D9B7C7D0049774C /* AppDelegate.m */,
 			);
@@ -740,6 +865,10 @@
 		3268254E1D9B9A540049774C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				32061D8B1D9BAA3300E07438 /* FMNetManager */,
+				325B27551EA9DC5300AE83A3 /* FMDataManager */,
+				325B276A1EA9E1E000AE83A3 /* DTSViewManager */,
+				325B275D1EA9DFCF00AE83A3 /* DTSApplication */,
 				324B19C41DA780CA003959FE /* BaseVC */,
 				324B19B41DA78093003959FE /* BaseCustomViewController */,
 				322972341DA8DF8D009A65A1 /* BaseView */,
@@ -751,6 +880,9 @@
 		3268254F1D9B9A540049774C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				325B27781EA9F01F00AE83A3 /* NSDictionary */,
+				325B27741EA9E51600AE83A3 /* MBProgressHUD */,
+				325B27591EA9DF8400AE83A3 /* NSObject */,
 				3207A9A71DB0BB570057BE67 /* GVUserDefaults */,
 				322972351DA8F8ED009A65A1 /* UIImage */,
 				32FCA4E31DA4E87B0080D550 /* NSString */,
@@ -792,6 +924,7 @@
 		326825531D9B9A670049774C /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				325B27611EA9DFF900AE83A3 /* Reachability */,
 				32FFB5D11DC87BB300F5D4AE /* PYSearch */,
 				32CDC25F1DAE33D400FAEA33 /* DOUAudioStreamer */,
 				3229722A1DA795DF009A65A1 /* Easing */,
@@ -879,19 +1012,19 @@
 			path = PYSearch;
 			sourceTree = "<group>";
 		};
-		CABC57AC37C0599874527FDF /* Frameworks */ = {
+		3DB8EDEA54EC9E800E2EB524 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				606E883B68E4778346F79232 /* libPods-LittleJumpingFrog.a */,
+				5E563667D5FABC536ACFAED5 /* libPods-LittleJumpingFrog.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DEB21B665D0A7ED6AB92B464 /* Pods */ = {
+		F44FB3540EF9AD2DB698F21C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				462E870C25E3300B01FE226F /* Pods-LittleJumpingFrog.debug.xcconfig */,
-				D454AC3E314E34BDDDF67A09 /* Pods-LittleJumpingFrog.release.xcconfig */,
+				F1A094DA0DA9CB4D1CAFE558 /* Pods-LittleJumpingFrog.debug.xcconfig */,
+				ADAEB208CFE7CA55AFB47E40 /* Pods-LittleJumpingFrog.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -903,11 +1036,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3268254A1D9B7C7D0049774C /* Build configuration list for PBXNativeTarget "LittleJumpingFrog" */;
 			buildPhases = (
-				46DFD498F75F6A009D79F332 /* Check Pods Manifest.lock */,
+				582171C1591B0631797D534C /* 📦 Check Pods Manifest.lock */,
 				3268252F1D9B7C7D0049774C /* Sources */,
 				326825301D9B7C7D0049774C /* Frameworks */,
 				326825311D9B7C7D0049774C /* Resources */,
-				F6D10914E85CB13985731BBC /* Copy Pods Resources */,
+				A7379014DDC8B428CB41E2E4 /* 📦 Embed Pods Frameworks */,
+				819A3529B03A86F251C200A3 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -929,7 +1063,7 @@
 				TargetAttributes = {
 					326825321D9B7C7D0049774C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 25N3Y6XGYH;
+						DevelopmentTeam = 472P9J8R6U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -968,14 +1102,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		46DFD498F75F6A009D79F332 /* Check Pods Manifest.lock */ = {
+		582171C1591B0631797D534C /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -983,19 +1117,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F6D10914E85CB13985731BBC /* Copy Pods Resources */ = {
+		819A3529B03A86F251C200A3 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7379014DDC8B428CB41E2E4 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LittleJumpingFrog/Pods-LittleJumpingFrog-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1005,6 +1154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325B27771EA9E51600AE83A3 /* MBProgressHUD+DTS.m in Sources */,
 				325657741DC722B20098E23E /* FMRankSongListTableHeaderView.m in Sources */,
 				322972381DA8F90E009A65A1 /* UIImage+ImageEffects.m in Sources */,
 				32F574CB1DA5E41300F38CBE /* GCDTimer.m in Sources */,
@@ -1016,6 +1166,7 @@
 				32F574D71DA5E9A000F38CBE /* POPScaleControl.m in Sources */,
 				32FFB5E31DC87BC200F5D4AE /* UIView+PYExtension.m in Sources */,
 				32061DA11D9CA94100E07438 /* FMBlurViewTool.m in Sources */,
+				325B27691EA9DFF900AE83A3 /* CoreStatus.m in Sources */,
 				32FFB5E21DC87BC200F5D4AE /* UIColor+PYExtension.m in Sources */,
 				322972301DA79639009A65A1 /* FMEasing.m in Sources */,
 				32F574D41DA5E95B00F38CBE /* BaseControl.m in Sources */,
@@ -1027,6 +1178,7 @@
 				32F574C21DA5E34F00F38CBE /* GCDGroup.m in Sources */,
 				32092D981DB5E6CB0092309A /* FMRankSongModel.m in Sources */,
 				32061D871D9BA61A00E07438 /* FMSearchViewController.m in Sources */,
+				325B27731EA9E1E000AE83A3 /* NSMutableDictionary+DTSWeakReference.m in Sources */,
 				32061D841D9BA60B00E07438 /* FMRankListViewController.m in Sources */,
 				32061D941D9BB13100E07438 /* FMSongMenuCollectionCell.m in Sources */,
 				32061DAC1D9CAF8C00E07438 /* FMMusicIndicator.m in Sources */,
@@ -1036,6 +1188,7 @@
 				32061D8A1D9BA63100E07438 /* FMSongMenuViewController.m in Sources */,
 				32061D911D9BAD3600E07438 /* FMPublicMusictablesModel.m in Sources */,
 				322972331DA79752009A65A1 /* DismissingAnimator.m in Sources */,
+				325B27711EA9E1E000AE83A3 /* DTSViewManager.m in Sources */,
 				32061DB91D9CB76300E07438 /* PushAnimator.m in Sources */,
 				32061D981D9BD35200E07438 /* LineBackgroundView.m in Sources */,
 				32061DA81D9CAE5500E07438 /* FMPublicSonglistModel.m in Sources */,
@@ -1047,14 +1200,18 @@
 				32061DC91D9CB9F200E07438 /* DismissAnimator.m in Sources */,
 				32061DE41D9CC37300E07438 /* FMLrcModel.m in Sources */,
 				32061D9B1D9CA6CA00E07438 /* FMSongListViewController.m in Sources */,
+				325B27601EA9DFCF00AE83A3 /* DTSApplication.m in Sources */,
 				32061DA51D9CAE3200E07438 /* FMPublicHeadView.m in Sources */,
 				3207A9AA1DB0BB6E0057BE67 /* GVUserDefaults+Properties.m in Sources */,
 				324B19C21DA78093003959FE /* CustomViewController.m in Sources */,
 				32061DBD1D9CB85200E07438 /* UIView+SetRect.m in Sources */,
 				32061D8E1D9BAA5600E07438 /* FMNetManager.m in Sources */,
+				325B27801EA9F01F00AE83A3 /* NSDictionary+json.m in Sources */,
 				32061DCC1D9CBA4000E07438 /* FMPublicTableView.m in Sources */,
 				3239FD8E1DC07B7100BDE9E2 /* FMRankSongViewController.m in Sources */,
+				325B277F1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m in Sources */,
 				3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */,
+				325B27581EA9DC6B00AE83A3 /* FMDataManager.m in Sources */,
 				324B19C71DA780ED003959FE /* FMTabBarViewController.m in Sources */,
 				32092D921DB5E58D0092309A /* FMRankListModel.m in Sources */,
 				322972291DA7953A009A65A1 /* PresentingAnimator.m in Sources */,
@@ -1063,14 +1220,17 @@
 				32092D951DB5E63C0092309A /* FMRankListCell.m in Sources */,
 				32F574C81DA5E3E300F38CBE /* GCDSemaphore.m in Sources */,
 				324B19C31DA78093003959FE /* NormalTitleViewController.m in Sources */,
+				325B27811EA9F01F00AE83A3 /* NSDictionary+Utils.m in Sources */,
 				32061DB01D9CB1CE00E07438 /* FMCreatTool.m in Sources */,
 				32061DD81D9CBC6800E07438 /* FMPublicCellIconModel.m in Sources */,
 				324B19C01DA78093003959FE /* CustomNormalContentViewController.m in Sources */,
+				325B27721EA9E1E000AE83A3 /* DTSWeakReference.m in Sources */,
 				32061DDB1D9CC04D00E07438 /* FMMusicModel.m in Sources */,
 				32061DF51D9CC7B800E07438 /* FMPlayerQueue.m in Sources */,
 				32061DF21D9CC75100E07438 /* FMPlayMusicTool.m in Sources */,
 				32061DFF1D9CCB3300E07438 /* FMPromptTool.m in Sources */,
 				3202C9141DA4961D00159226 /* UIFont+Fonts.m in Sources */,
+				325B275C1EA9DF8400AE83A3 /* NSObject+Utils.m in Sources */,
 				32061D811D9BA5B300E07438 /* FMLocalMusicViewController.m in Sources */,
 				3229722D1DA79600009A65A1 /* Easing.c in Sources */,
 				3207A9B41DB0C5900057BE67 /* FMMusicHandler.m in Sources */,
@@ -1180,13 +1340,14 @@
 		};
 		3268254B1D9B7C7D0049774C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 462E870C25E3300B01FE226F /* Pods-LittleJumpingFrog.debug.xcconfig */;
+			baseConfigurationReference = F1A094DA0DA9CB4D1CAFE558 /* Pods-LittleJumpingFrog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25N3Y6XGYH;
+				DEVELOPMENT_TEAM = 472P9J8R6U;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LittleJumpingFrog/LittleJumoingFrog/Common/LittleJumoingFrog.pch";
 				INFOPLIST_FILE = LittleJumpingFrog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mocwww.LittleJumpingFrog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1195,13 +1356,14 @@
 		};
 		3268254C1D9B7C7D0049774C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D454AC3E314E34BDDDF67A09 /* Pods-LittleJumpingFrog.release.xcconfig */;
+			baseConfigurationReference = ADAEB208CFE7CA55AFB47E40 /* Pods-LittleJumpingFrog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25N3Y6XGYH;
+				DEVELOPMENT_TEAM = 472P9J8R6U;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LittleJumpingFrog/LittleJumoingFrog/Common/LittleJumoingFrog.pch";
 				INFOPLIST_FILE = LittleJumpingFrog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mocwww.LittleJumpingFrog;
 				PRODUCT_NAME = "$(TARGET_NAME)";

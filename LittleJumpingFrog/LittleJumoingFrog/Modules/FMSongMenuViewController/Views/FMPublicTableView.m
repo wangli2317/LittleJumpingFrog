@@ -8,7 +8,6 @@
 
 #import "FMPublicTableView.h"
 #import "FMPublicTableViewCell.h"
-//#import "FMPlayingViewController.h"
 #import "FMMusicIndicator.h"
 #import <NAKPlaybackIndicatorView.h>
 #import "FMMusicModel.h"
@@ -28,7 +27,6 @@ typedef NS_ENUM(NSInteger) {
 @interface FMPublicTableView ()<UITableViewDelegate,
                                 UITableViewDataSource,
                                 PublicTableViewCellDelegate,
-//                                playingViewControllerDelegate
                                 FMMusicViewControllerDelegate>
 
 @property (nonatomic ,weak  ) FMPublicTableViewCell *isOpenCell;
@@ -192,17 +190,22 @@ typedef NS_ENUM(NSInteger) {
     
         __weak typeof(self) weakSelf = self;
         
-        [[FMNetManager shareNetManager]netWorkToolGetWithUrl:FMMusic parameters:@{@"songIds":_songIdsArrayM[index]} response:^(id response) {
+        [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[index] Success:^(NSMutableArray *data) {
             
-            NSMutableArray *arrayM = response[@"data"][@"songList"];
+             __strong typeof(weakSelf)strongSelf = weakSelf;
             
-            FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
+            FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:data.firstObject];
             
-            [weakSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
+            [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
             
-            [weakSelf updateIndicatorPresentMusicViewControllerWithIndexPath:indexPath musicEntity:musicEntity];
-
+            [strongSelf updateIndicatorPresentMusicViewControllerWithIndexPath:indexPath musicEntity:musicEntity];
+            
+        } failed:^(NSString *message) {
+            [GCDQueue executeInMainQueue:^{
+                [MBProgressHUD showError:message];
+            }];
         }];
+    
     }
 }
 
@@ -238,17 +241,22 @@ typedef NS_ENUM(NSInteger) {
     
     __weak typeof(self) weakSelf = self;
     
-    [[FMNetManager shareNetManager]netWorkToolGetWithUrl:FMMusic parameters:@{@"songIds":_songIdsArrayM[currentIndex]} response:^(id response) {
+    [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[currentIndex] Success:^(NSMutableArray *data) {
         
-        NSMutableArray *arrayM = response[@"data"][@"songList"];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
         
-        FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
+        FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:data.firstObject];
         
-        [weakSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:currentIndex];
+        [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:currentIndex];
         
         setupMusicEntity();
-    
+        
+    } failed:^(NSString *message) {
+        [GCDQueue executeInMainQueue:^{
+            [MBProgressHUD showError:message];
+        }];
     }];
+    
 }
 
 #pragma mark - 懒加载

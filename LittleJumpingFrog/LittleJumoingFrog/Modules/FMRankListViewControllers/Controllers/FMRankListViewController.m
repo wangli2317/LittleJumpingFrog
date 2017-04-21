@@ -28,16 +28,16 @@
     
     [super setup];
         
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.backgroundColor = UIColorFromRGB(0xf5f5f5);
+    self.tableView                   = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
+    self.tableView.delegate          = self;
+    self.tableView.dataSource        = self;
+    self.tableView.backgroundColor   = UIColorFromRGB(0xf5f5f5);
     [self.view addSubview:self.tableView];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+    self.tableView.separatorStyle    = UITableViewCellSeparatorStyleNone;
+
     FMRankListHeaderView *headerView = [FMRankListHeaderView new];
-    
-    self.tableView.tableHeaderView = headerView;
+
+    self.tableView.tableHeaderView   = headerView;
     
 }
 
@@ -75,13 +75,23 @@
 #pragma mark - loadData
 - (void)loadRankData{
     
-    [[FMNetManager shareNetManager] netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.billboard.billCategory",@"kflag":@"1") response:^(id response) {
-
-        NSArray *modelArray = [NSArray modelArrayWithClass:[FMRankListModel class] json:response[@"content"]];
-        self.rankListArray = [modelArray modelCopy];
+    __weak typeof(self) weakSelf  = self;
+    [[FMDataManager manager] getRankListSuccess:^(id data) {
         
-        [self.tableView reloadData];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        
+        strongSelf.rankListArray = data;
+        
+        [GCDQueue executeInMainQueue:^{
+            [strongSelf.tableView reloadData];
+        }];
+        
+    } failed:^(NSString *message) {
+        [GCDQueue executeInMainQueue:^{
+            [MBProgressHUD showError:message];
+        }];
     }];
+    
 }
 
 #pragma mark - 懒加载

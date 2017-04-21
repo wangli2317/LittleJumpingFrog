@@ -22,14 +22,21 @@
 }
 
 - (void)loadSearchData{
-    [[FMNetManager shareNetManager] netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.search.hot",@"page_num":@"15") response:^(id response) {
-        NSMutableArray *hotSeaches = [NSMutableArray array];
+    
+    __weak typeof(self) weakSelf  = self;
+    
+    [[FMDataManager manager]getHotSearchesSuccess:^(id data) {
         
-        for (NSDictionary *dict in response[@"result"]) {
-            [hotSeaches addObject:dict[@"word"]];
-        }
-        [self setValue:hotSeaches forKey:@"hotSearches"];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        
+         [strongSelf setValue:data forKey:@"hotSearches"];
+        
+    } failed:^(NSString *message) {
+       [GCDQueue executeInMainQueue:^{
+           [MBProgressHUD showError:message];
+       }];
     }];
+    
 }
 
 

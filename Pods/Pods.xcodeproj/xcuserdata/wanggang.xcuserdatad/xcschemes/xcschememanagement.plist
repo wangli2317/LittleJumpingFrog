@@ -4,52 +4,52 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-LittleJumpingFrog-AFNetworking.xcscheme</key>
+		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-DOUAudioStreamer.xcscheme</key>
+		<key>DOUAudioStreamer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-GVUserDefaults.xcscheme</key>
+		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-MBProgressHUD.xcscheme</key>
+		<key>GVUserDefaults.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-MJRefresh.xcscheme</key>
+		<key>GYDataCenter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-MTLog.xcscheme</key>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-Masonry.xcscheme</key>
+		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-NAKPlaybackIndicatorView.xcscheme</key>
+		<key>MTLog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-YYKit.xcscheme</key>
+		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LittleJumpingFrog-pop.xcscheme</key>
+		<key>NAKPlaybackIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -59,60 +59,100 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SSZipArchive.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>089C53F353FC8CDA061B7DE1</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>33B6340B4F69ECE98E0BC246</key>
+		<key>22A9A9637D1202BF86076109A1AA6761</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>352B72D4C5212B8BA40DC374</key>
+		<key>325E0F928F4D0842ECDF259F63F1D842</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5929F363D7250118937EA650</key>
+		<key>3EC6019BC3C352D0699ABC1428DDAEF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>654C9A94FB2AB586CF81C8FF</key>
+		<key>4E1760B24F28710932FDB07BA7568957</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D769C48B44E31C73248EF8D</key>
+		<key>52901DD8C0CC92F27A1ED34EC4F15F66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7EC818D0945E071AD316B923</key>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5612271FA63B96A92B5330F</key>
+		<key>5CE6AF1A65DDC4DF70745051D8ACFA30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D981C3E81035C4CDB1F23A1C</key>
+		<key>6E2F21595420A2F5DDA4452E5F181D38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E400CDE08C71E67D8C5C2FB5</key>
+		<key>75FF7157F234616C3C22094B8C287A5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EAB3FF1B2B39B045392DC787</key>
+		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3E6172717D69445FC4EFEFC4A2B8517</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6F035B58B392AD1286D144909964327</key>
 		<dict>
 			<key>primary</key>
 			<true/>

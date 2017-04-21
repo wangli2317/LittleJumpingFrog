@@ -90,12 +90,16 @@
     NSInteger offset = _songMenuPage * 30;
     
     __weak typeof(self) weakSelf = self;
-    [[FMNetManager shareNetManager] netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.billboard.billList",@"offset":@(offset),@"size":@"30",@"type":self.rankType.type) response:^(id response) {
+    
+    [[FMDataManager manager] getRankSongListWithOffset:offset type:self.rankType.type Success:^(id data) {
         
-        NSArray *songList = response[@"song_list"];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        
+        
+        NSArray *songList = data[@"song_list"];
         NSInteger i = offset;
         
-        FMRankSonglistModel *rankSongListModel = [FMRankSonglistModel modelWithJSON:response[@"billboard"]];
+        FMRankSonglistModel *rankSongListModel = [FMRankSonglistModel modelWithJSON:data[@"billboard"]];
         
         NSMutableArray *indexPaths = [NSMutableArray array];
         for (NSDictionary *dict in songList) {
@@ -104,31 +108,35 @@
             
             FMPublicSongDetailModel *songDetail = [FMPublicSongDetailModel modelWithJSON:dict];
             songDetail.num = ++i;
-            [weakSelf.rankArray addObject:songDetail];
-            [weakSelf.songIds addObject:songDetail.song_id];
+            [strongSelf.rankArray addObject:songDetail];
+            [strongSelf.songIds addObject:songDetail.song_id];
             
         }
         
         
         [GCDQueue executeInMainQueue:^{
-        
-            weakSelf.publicTableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
-    
-            weakSelf.headView.frame =CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
             
-            weakSelf.publicTableView.tableHeaderView = self.headView;
+            strongSelf.publicTableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
             
-            weakSelf.headView.songListModel = rankSongListModel;
-        
-            [weakSelf.publicTableView setSongList:_rankArray songIds:_songIds listKey:_rankType.comment];
+            strongSelf.headView.frame =CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
             
-            [weakSelf.publicTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-
+            strongSelf.publicTableView.tableHeaderView = self.headView;
+            
+            strongSelf.headView.songListModel = rankSongListModel;
+            
+            [strongSelf.publicTableView setSongList:_rankArray songIds:_songIds listKey:_rankType.comment];
+            
+            [strongSelf.publicTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            
             
         }];
 
-        
+    } failed:^(NSString *message) {
+        [GCDQueue executeInMainQueue:^{
+            [MBProgressHUD showError:message];
+        }];
     }];
+
 }
 
 - (void)publickTableClickCell:(FMPublicTableView *)publicTableView{

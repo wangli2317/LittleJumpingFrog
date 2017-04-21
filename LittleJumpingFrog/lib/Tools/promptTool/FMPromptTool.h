@@ -10,6 +10,9 @@
 #import <MBProgressHUD.h>
 
 @interface FMPromptTool : NSObject
+
 + (void)promptModeText:(NSString *)text afterDelay:(NSInteger)time;
+
 + (MBProgressHUD *)promptModeIndeterminatetext:(NSString *)text;
+
 @end

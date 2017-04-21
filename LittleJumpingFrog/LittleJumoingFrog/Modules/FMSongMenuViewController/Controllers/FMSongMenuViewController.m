@@ -109,9 +109,9 @@ static NSString *reuseId = @"songMenu";
 #pragma mark - loadData
 - (void)loadSongMenuWithPage:(NSInteger)page array:(NSMutableArray *)array reloadView:(UITableView *)view{
     
-    [[FMNetManager shareNetManager]netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.diy.gedan",@"page_no":[NSString stringWithFormat:@"%ld",page],@"page_size":@"30") response:^(id response) {
+    [[FMDataManager manager]getSongMenuWithPage:page Success:^(id data) {
         
-        for (NSDictionary *dict in response[@"content"]) {
+        for (NSDictionary *dict in data[@"content"]) {
             
             FMPublicMusictablesModel *tables = [FMPublicMusictablesModel modelWithJSON:dict];
             
@@ -119,7 +119,16 @@ static NSString *reuseId = @"songMenu";
             
             [view reloadData];
         }
+
+    } failed:^(NSString *message) {
+        
+        [GCDQueue executeInMainQueue:^{
+        
+            [MBProgressHUD showError:message];
+        
+        }];
     }];
+    
 }
 
 #pragma mark - UIScrollView's delegate.

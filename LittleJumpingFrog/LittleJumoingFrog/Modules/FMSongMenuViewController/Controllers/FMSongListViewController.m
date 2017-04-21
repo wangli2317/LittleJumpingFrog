@@ -80,9 +80,11 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[FMNetManager shareNetManager]netWorkToolGetWithUrl:FMUrl parameters:FMParams(@"method":@"baidu.ting.diy.gedanInfo",@"listid":self.musicModel.listid) response:^(id response) {
+    [[FMDataManager manager]getSongListWithListid:self.musicModel.listid Success:^(id data) {
         
-        FMPublicSonglistModel *songList = [FMPublicSonglistModel modelWithJSON:response];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        
+        FMPublicSonglistModel *songList = [FMPublicSonglistModel modelWithJSON:data];
         NSInteger i = 0;
         
         NSMutableArray *indexPaths = [NSMutableArray array];
@@ -92,28 +94,33 @@
             
             FMPublicSongDetailModel *songDetail = [FMPublicSongDetailModel modelWithJSON:dict];
             songDetail.num = ++i;
-            [weakSelf.songListArrayM addObject:songDetail];
-            [weakSelf.songIdsArrayM addObject:songDetail.song_id];
+            [strongSelf.songListArrayM addObject:songDetail];
+            [strongSelf.songIdsArrayM addObject:songDetail.song_id];
             
         }
-
+        
         
         [GCDQueue executeInMainQueue:^{
-
             
-            weakSelf.tableView.frame = CGRectMake(0,40, getScreenWidth(), getScreenHeight());
-            weakSelf.headView.frame = CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
-               weakSelf.tableView.tableHeaderView = weakSelf.headView;
             
-            [weakSelf.headView setMenuList:songList];
-
-            [weakSelf.tableView setSongList:_songListArrayM songIds:_songIdsArrayM listKey:_musicModel.listid];
+            strongSelf.tableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
+            strongSelf.headView.frame = CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
+            strongSelf.tableView.tableHeaderView = strongSelf.headView;
             
-            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-
+            [strongSelf.headView setMenuList:songList];
+            
+            [strongSelf.tableView setSongList:_songListArrayM songIds:_songIdsArrayM listKey:_musicModel.listid];
+            
+            [strongSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            
         }];
 
+    } failed:^(NSString *message) {
+        [GCDQueue executeInMainQueue:^{
+            [MBProgressHUD showError:message];
+        }];
     }];
+    
 }
 
 - (void)publickTableClickCell:(FMPublicTableView *)publicTableView{

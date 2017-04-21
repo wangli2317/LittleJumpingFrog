@@ -10,4 +10,8 @@ target 'LittleJumpingFrog' do
 	pod 'pop', '~> 1.0'
 	pod 'DOUAudioStreamer', '0.2.11'
 	pod 'GVUserDefaults'
+    pod 'Reachability'
+    pod 'GYDataCenter'
+    pod 'SSZipArchive'
+    pod 'FMDB'
 end
