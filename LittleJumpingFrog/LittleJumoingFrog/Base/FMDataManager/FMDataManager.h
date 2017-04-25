@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class FMMusicModel;
+
 @interface FMDataManager : NSObject
 
 + (instancetype)manager;
@@ -29,7 +31,7 @@
                        failed:(void (^)(NSString * message)) failed;
 
 - (void)getSongMenuWithPage:(NSInteger)page
-                    Success:(void (^)(id data))success
+                    Success:(void (^)(NSArray  * modelArray))success
                      failed:(void (^)(NSString * message)) failed;
 
 - (void)getSongListWithListid:(NSString *)listid
@@ -37,7 +39,7 @@
                      failed:(void (^)(NSString * message)) failed;
 
 - (void)getPublicListWithSongId:(NSString *)songId
-                        Success:(void (^)(NSMutableArray * data))success
+                        Success:(void (^)(FMMusicModel * musicEntity))success
                          failed:(void (^)(NSString * message)) failed;
 
 - (void)getRankSongListWithOffset:(NSInteger)offset

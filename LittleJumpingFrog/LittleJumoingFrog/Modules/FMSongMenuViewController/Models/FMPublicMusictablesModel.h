@@ -6,9 +6,9 @@
 //  Copyright © 2016年 WangGang. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <GYDataCenter.h>
 
-@interface FMPublicMusictablesModel : NSObject
+@interface FMPublicMusictablesModel : GYModelObject
 @property (nonatomic, copy) NSString *listid;
 @property (nonatomic ,copy) NSString *album_id;
 @property (nonatomic, copy) NSString *listenum;

@@ -80,6 +80,7 @@
 		325B277F1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277A1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m */; };
 		325B27801EA9F01F00AE83A3 /* NSDictionary+json.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277C1EA9F01F00AE83A3 /* NSDictionary+json.m */; };
 		325B27811EA9F01F00AE83A3 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B277E1EA9F01F00AE83A3 /* NSDictionary+Utils.m */; };
+		325B27851EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B27841EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m */; };
 		326825381D9B7C7D0049774C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 326825371D9B7C7D0049774C /* main.m */; };
 		3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268253A1D9B7C7D0049774C /* AppDelegate.m */; };
 		326825431D9B7C7D0049774C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 326825421D9B7C7D0049774C /* Assets.xcassets */; };
@@ -247,6 +248,8 @@
 		325B277C1EA9F01F00AE83A3 /* NSDictionary+json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+json.m"; sourceTree = "<group>"; };
 		325B277D1EA9F01F00AE83A3 /* NSDictionary+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utils.h"; sourceTree = "<group>"; };
 		325B277E1EA9F01F00AE83A3 /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
+		325B27831EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GYModelObject+DTSPersistentProperties.h"; sourceTree = "<group>"; };
+		325B27841EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GYModelObject+DTSPersistentProperties.m"; sourceTree = "<group>"; };
 		326825331D9B7C7D0049774C /* LittleJumpingFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleJumpingFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		326825371D9B7C7D0049774C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		326825391D9B7C7D0049774C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -791,6 +794,15 @@
 			path = NSDictionary;
 			sourceTree = "<group>";
 		};
+		325B27821EAD9E4D00AE83A3 /* GYModelObject */ = {
+			isa = PBXGroup;
+			children = (
+				325B27831EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.h */,
+				325B27841EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m */,
+			);
+			path = GYModelObject;
+			sourceTree = "<group>";
+		};
 		3268252A1D9B7C7D0049774C = {
 			isa = PBXGroup;
 			children = (
@@ -862,6 +874,7 @@
 		3268254F1D9B9A540049774C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				325B27821EAD9E4D00AE83A3 /* GYModelObject */,
 				325B27781EA9F01F00AE83A3 /* NSDictionary */,
 				325B27741EA9E51600AE83A3 /* MBProgressHUD */,
 				325B27591EA9DF8400AE83A3 /* NSObject */,
@@ -1117,6 +1130,7 @@
 			files = (
 				325B27771EA9E51600AE83A3 /* MBProgressHUD+DTS.m in Sources */,
 				325657741DC722B20098E23E /* FMRankSongListTableHeaderView.m in Sources */,
+				325B27851EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m in Sources */,
 				322972381DA8F90E009A65A1 /* UIImage+ImageEffects.m in Sources */,
 				32F574CB1DA5E41300F38CBE /* GCDTimer.m in Sources */,
 				32CDC2621DAE33ED00FAEA33 /* Track.m in Sources */,

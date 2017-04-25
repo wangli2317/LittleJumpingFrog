@@ -8,6 +8,7 @@
 
 #import "FMDataManager.h"
 #import "FMNetManager.h"
+#import "FMMusicModel.h"
 
 @interface FMDataManager ()
 
@@ -98,14 +99,16 @@
 }
 
 - (void)getSongMenuWithPage:(NSInteger)page
-                    Success:(void (^)(id data))success
+                    Success:(void (^)(NSArray * modelArray))success
                      failed:(void (^)(NSString * message)) failed{
     NSDictionary *params =  FMParams(@"method":@"baidu.ting.diy.gedan",@"page_no":[NSString stringWithFormat:@"%ld",page],@"page_size":@"30");
     
     [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
         
+        NSArray *modelArray = [NSArray modelArrayWithClass:NSClassFromString(@"FMPublicMusictablesModel") json:data[@"content"]];
+        
         if (success) {
-            success(data);
+            success(modelArray);
         }
     } failed:^(NSString * _Nonnull message) {
         if (failed) {
@@ -133,23 +136,37 @@
 
 
 - (void)getPublicListWithSongId:(NSString *)songId
-                        Success:(void (^)(NSMutableArray * data))success
+                        Success:(void (^)(FMMusicModel * musicEntity))success
                          failed:(void (^)(NSString * message)) failed{
-    NSDictionary *params =   @{@"songIds":songId};
     
-    [[FMNetManager manager] getWithUrl:FMMusic params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
-        
-        NSMutableArray *arrayM = data[@"data"][@"songList"];
-        
+    NSArray *localModelArray = [FMMusicModel objectsWhere:[NSString stringWithFormat:@"WHERE songId='%@'",songId] arguments:nil];
+    
+    if (localModelArray.count > 0) {
         if (success) {
-            success(arrayM);
+            success(localModelArray.firstObject);
         }
+    }else{
+        NSDictionary *params =   @{@"songIds":songId};
         
-    } failed:^(NSString * _Nonnull message) {
-        if (failed) {
-            failed(message);
-        }
-    }];
+        [[FMNetManager manager] getWithUrl:FMMusic params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            
+            NSMutableArray *arrayM = data[@"data"][@"songList"];
+            
+            FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
+            
+            [musicEntity save];
+            
+            if (success) {
+                success(musicEntity);
+            }
+            
+        } failed:^(NSString * _Nonnull message) {
+            if (failed) {
+                failed(message);
+            }
+        }];
+    
+    }
 }
 
 - (void)getRankSongListWithOffset:(NSInteger)offset

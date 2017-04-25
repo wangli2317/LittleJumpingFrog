@@ -190,12 +190,10 @@ typedef NS_ENUM(NSInteger) {
     
         __weak typeof(self) weakSelf = self;
         
-        [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[index] Success:^(NSMutableArray *data) {
+        [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[index] Success:^(FMMusicModel * musicEntity) {
             
              __strong typeof(weakSelf)strongSelf = weakSelf;
-            
-            FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:data.firstObject];
-            
+
             [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
             
             [strongSelf updateIndicatorPresentMusicViewControllerWithIndexPath:indexPath musicEntity:musicEntity];
@@ -241,11 +239,9 @@ typedef NS_ENUM(NSInteger) {
     
     __weak typeof(self) weakSelf = self;
     
-    [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[currentIndex] Success:^(NSMutableArray *data) {
+    [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[currentIndex] Success:^(FMMusicModel *musicEntity) {
         
         __strong typeof(weakSelf)strongSelf = weakSelf;
-        
-        FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:data.firstObject];
         
         [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:currentIndex];
         

@@ -9,6 +9,7 @@
 #import "FMPublicCellIconModel.h"
 
 @implementation FMPublicCellIconModel
+
 + (NSArray *)CellMenuItemArray{
     NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CellMenuItem" ofType:@"plist"]];
     NSMutableArray *arrayM = [NSMutableArray array];

@@ -141,11 +141,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 [weakSelf setupStreamer];
                 
                 [GCDQueue executeInMainQueue:^{
-    
+                    
                     [weakSelf updateMusicsCellsState];
-    
+                    
                 }];
-             
+                
             }];
         }
     }
@@ -302,10 +302,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (IBAction)didChangeMusicSliderValue:(id)sender {
-//    if (_streamer.status == DOUAudioStreamerFinished) {
-//        _streamer = nil;
-//        [self createStreamer];
-//    }
+    //    if (_streamer.status == DOUAudioStreamerFinished) {
+    //        _streamer = nil;
+    //        [self createStreamer];
+    //    }
     
     [_streamer setCurrentTime:[_streamer duration] * _musicSlider.value];
     [self updateProgressLabelValue];
@@ -339,7 +339,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         [self checkNextIndexValue];
     }
     
-   
+    
 }
 
 - (void)checkNextIndexValue {
@@ -407,7 +407,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)updateBufferingStatus {
-    
+
 }
 
 - (void)invalidMusicDurationTimer {
@@ -426,16 +426,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }
     
     [self setupMusicViewWithMusicEntity:_musicEntities[_currentIndex]];
-//    [self loadPreviousAndNextMusicImage];
+    //    [self loadPreviousAndNextMusicImage];
     [FMMusicHandler configNowPlayingInfoCenter];
     
     Track *track = [[Track alloc] init];
-    
-    //    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:_musicEntity.fileName ofType: @"mp3"];
-    //    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    
+
     track.audioFileURL = [NSURL URLWithString:_musicEntity.songLink];
-    //    track.audioFileURL = fileURL;
+    
     
     @try {
         [self removeStreamerObserver];
@@ -560,62 +557,5 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     return _musicEntities[_currentIndex];
 }
 
-/*
-- (void)loaddata{
-    
-    GCDGroup *group = [GCDGroup new];
-    
-    __weak typeof(self) weakSelf = self;
-    
-    //    if ([self.listKeyDict objectForKey:_listKey]) {
-    //
-    //        self.musicEntities = [self.listKeyDict objectForKey:_listKey];
-    //
-    //    }else{
-    
-    [self.musicEntities removeAllObjects];
-    
-    //        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:_musicIDArray];
-    
-    //        for (int i = 0; i < _musicIDArray.count; ++i) {
-    
-    [group enter];
-    
-    [[GCDQueue globalQueue] execute:^{
-        // 代码
-        [[FMNetManager shareNetManager]netWorkToolGetWithUrl:FMMusic parameters:@{@"songIds":_musicIDArray[_specialIndex]} response:^(id response) {
-            [group leave];
-            NSMutableArray *arrayM = response[@"data"][@"songList"];
-            
-            _musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
-            
-            [_musicIDArray setObject:_musicEntity atIndexedSubscript:_specialIndex];
-            
-            // 监听group中的其他的任务完成后才会执行到此处
-            [weakSelf.musicEntities addObjectsFromArray:_musicIDArray];
-            [weakSelf.listKeyDict setObject:weakSelf.musicEntities forKey:_listKey];
-        }];
-    } inGroup:group];
-    //        }
-    
-    
-    //    }
-    [[GCDQueue mainQueue] notify:^{
-        _musicCycleType = [GVUserDefaults standardUserDefaults].musicCycleType;
-        [weakSelf setupRadioMusicIfNeeded];
-        
-        if (_dontReloadMusic && _streamer) {
-            return;
-        }
-        _currentIndex = 0;
-        
-        [_originArray removeAllObjects];
-        [weakSelf loadOriginArrayIfNeeded];
-        
-        [weakSelf createStreamer];
-        
-    } inGroup:group];
-}
-*/
 
 @end

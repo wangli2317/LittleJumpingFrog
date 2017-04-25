@@ -7,7 +7,20 @@
 //
 
 #import "FMMusicModel.h"
+#import "GYModelObject+DTSPersistentProperties.h"
 
 @implementation FMMusicModel
+
++ (NSString *)dbName {
+    return @"FMSongListDB";
+}
+
++ (NSString *)tableName {
+    return @"FMSongList";
+}
+
++ (NSString *)primaryKey {
+    return @"songId";
+}
 
 @end

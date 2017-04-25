@@ -52,13 +52,12 @@ static NSString *reuseId = @"songMenu";
 
 
 - (void)setUpSongMenuTableView{
-    self.songMenuTableView                     = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.songMenuTableView                     = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 49 - 64)];
     self.songMenuTableView.delegate            = self;
     self.songMenuTableView.dataSource          = self;
     self.songMenuTableView.rowHeight           = 250;
     self.songMenuTableView.sectionHeaderHeight = 25.f;
     self.songMenuTableView.separatorStyle      = UITableViewCellSeparatorStyleNone;
-    
     [self.songMenuTableView registerClass:[FMSongMenuCollectionCell class]  forCellReuseIdentifier:@"FMSongMenuTableViewCell"];
 
     [self.view addSubview:self.songMenuTableView];
@@ -99,8 +98,9 @@ static NSString *reuseId = @"songMenu";
 - (void)setUpRefreshFooter{
     __weak __typeof(self) weakSelf = self;
     self.songMenuTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        weakSelf.songMenuPage += 1;
-        [weakSelf loadSongMenuWithPage:self.songMenuPage array:weakSelf.songMenuDataArrayM reloadView:weakSelf.songMenuTableView];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.songMenuPage += 1;
+        [strongSelf loadSongMenuWithPage:strongSelf.songMenuPage array:strongSelf.songMenuDataArrayM reloadView:strongSelf.songMenuTableView];
         weakSelf.songMenuTableView.mj_footer.hidden = YES;
     }];
 }
@@ -108,18 +108,17 @@ static NSString *reuseId = @"songMenu";
 
 #pragma mark - loadData
 - (void)loadSongMenuWithPage:(NSInteger)page array:(NSMutableArray *)array reloadView:(UITableView *)view{
-    
-    [[FMDataManager manager]getSongMenuWithPage:page Success:^(id data) {
-        
-        for (NSDictionary *dict in data[@"content"]) {
-            
-            FMPublicMusictablesModel *tables = [FMPublicMusictablesModel modelWithJSON:dict];
-            
-            [array addObject:tables];
+   
+     __weak __typeof(self) weakSelf = self;
+    [[FMDataManager manager]getSongMenuWithPage:page Success:^(NSArray * modelArray) {
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        if (modelArray.count > 0) {
+            [array addObjectsFromArray:modelArray];
             
             [view reloadData];
+        }else{
+            [strongSelf.songMenuTableView.mj_footer endRefreshingWithNoMoreData];
         }
-
     } failed:^(NSString *message) {
         
         [GCDQueue executeInMainQueue:^{

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 WangGang. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <GYDataCenter.h>
 
-@interface FMMusicModel : NSObject
+@interface FMMusicModel : GYModelObject
 @property (nonatomic ,copy) NSString *songName;
 @property (nonatomic ,copy) NSString *artistName;
 @property (nonatomic ,copy) NSString *albumName;
