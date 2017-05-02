@@ -84,6 +84,14 @@
 		326825381D9B7C7D0049774C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 326825371D9B7C7D0049774C /* main.m */; };
 		3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268253A1D9B7C7D0049774C /* AppDelegate.m */; };
 		326825431D9B7C7D0049774C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 326825421D9B7C7D0049774C /* Assets.xcassets */; };
+		327FC0BC1EB8975100BF025A /* FMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0AD1EB8975100BF025A /* FMScrollView.m */; };
+		327FC0BD1EB8975100BF025A /* FMScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0AF1EB8975100BF025A /* FMScrollViewCell.m */; };
+		327FC0BE1EB8975100BF025A /* FMScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0B11EB8975100BF025A /* FMScrollViewManager.m */; };
+		327FC0BF1EB8975100BF025A /* PZPathAnimCircleRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0B41EB8975100BF025A /* PZPathAnimCircleRefreshControl.m */; };
+		327FC0C01EB8975100BF025A /* PZRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0B61EB8975100BF025A /* PZRefreshControl.m */; };
+		327FC0C11EB8975100BF025A /* PZRefreshControlDefaultStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0B81EB8975100BF025A /* PZRefreshControlDefaultStyle.m */; };
+		327FC0C21EB8975100BF025A /* PZRefreshNormalControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0BB1EB8975100BF025A /* PZRefreshNormalControl.m */; };
+		327FC0C61EB89A9A00BF025A /* NSDate+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FC0C51EB89A9A00BF025A /* NSDate+Utils.m */; };
 		32CDC25A1DADDB7E00FAEA33 /* FMMusicSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC2591DADDB7E00FAEA33 /* FMMusicSlider.m */; };
 		32CDC25C1DADDBDA00FAEA33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CDC25B1DADDBDA00FAEA33 /* Images.xcassets */; };
 		32CDC2621DAE33ED00FAEA33 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC2611DAE33ED00FAEA33 /* Track.m */; };
@@ -169,7 +177,7 @@
 		32061DFA1D9CC9FF00E07438 /* UIView+distribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+distribute.m"; sourceTree = "<group>"; };
 		32061DFD1D9CCB3300E07438 /* FMPromptTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPromptTool.h; sourceTree = "<group>"; };
 		32061DFE1D9CCB3300E07438 /* FMPromptTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPromptTool.m; sourceTree = "<group>"; };
-		32061E001D9CCDA500E07438 /* CellMenuItem.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CellMenuItem.plist; path = ../CellMenuItem.plist; sourceTree = "<group>"; };
+		32061E001D9CCDA500E07438 /* CellMenuItem.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CellMenuItem.plist; sourceTree = "<group>"; };
 		3207A9A41DB0B6A60057BE67 /* UIView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animations.h"; sourceTree = "<group>"; };
 		3207A9A51DB0B6A60057BE67 /* UIView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animations.m"; sourceTree = "<group>"; };
 		3207A9A81DB0BB6E0057BE67 /* GVUserDefaults+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GVUserDefaults+Properties.h"; sourceTree = "<group>"; };
@@ -254,8 +262,25 @@
 		326825371D9B7C7D0049774C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		326825391D9B7C7D0049774C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		3268253A1D9B7C7D0049774C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
-		326825421D9B7C7D0049774C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		326825421D9B7C7D0049774C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		326825471D9B7C7D0049774C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		327FC0AC1EB8975100BF025A /* FMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScrollView.h; sourceTree = "<group>"; };
+		327FC0AD1EB8975100BF025A /* FMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScrollView.m; sourceTree = "<group>"; };
+		327FC0AE1EB8975100BF025A /* FMScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScrollViewCell.h; sourceTree = "<group>"; };
+		327FC0AF1EB8975100BF025A /* FMScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScrollViewCell.m; sourceTree = "<group>"; };
+		327FC0B01EB8975100BF025A /* FMScrollViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMScrollViewManager.h; sourceTree = "<group>"; };
+		327FC0B11EB8975100BF025A /* FMScrollViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMScrollViewManager.m; sourceTree = "<group>"; };
+		327FC0B31EB8975100BF025A /* PZPathAnimCircleRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZPathAnimCircleRefreshControl.h; sourceTree = "<group>"; };
+		327FC0B41EB8975100BF025A /* PZPathAnimCircleRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZPathAnimCircleRefreshControl.m; sourceTree = "<group>"; };
+		327FC0B51EB8975100BF025A /* PZRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZRefreshControl.h; sourceTree = "<group>"; };
+		327FC0B61EB8975100BF025A /* PZRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZRefreshControl.m; sourceTree = "<group>"; };
+		327FC0B71EB8975100BF025A /* PZRefreshControlDefaultStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZRefreshControlDefaultStyle.h; sourceTree = "<group>"; };
+		327FC0B81EB8975100BF025A /* PZRefreshControlDefaultStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZRefreshControlDefaultStyle.m; sourceTree = "<group>"; };
+		327FC0B91EB8975100BF025A /* PZRefreshControlStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZRefreshControlStyle.h; sourceTree = "<group>"; };
+		327FC0BA1EB8975100BF025A /* PZRefreshNormalControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZRefreshNormalControl.h; sourceTree = "<group>"; };
+		327FC0BB1EB8975100BF025A /* PZRefreshNormalControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZRefreshNormalControl.m; sourceTree = "<group>"; };
+		327FC0C41EB89A9A00BF025A /* NSDate+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utils.h"; sourceTree = "<group>"; };
+		327FC0C51EB89A9A00BF025A /* NSDate+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utils.m"; sourceTree = "<group>"; };
 		32CDC2581DADDB7E00FAEA33 /* FMMusicSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMusicSlider.h; sourceTree = "<group>"; };
 		32CDC2591DADDB7E00FAEA33 /* FMMusicSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMusicSlider.m; sourceTree = "<group>"; };
 		32CDC25B1DADDBDA00FAEA33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -859,6 +884,7 @@
 		3268254E1D9B9A540049774C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				327FC0AB1EB8974400BF025A /* FMScrollView */,
 				32061D8B1D9BAA3300E07438 /* FMNetManager */,
 				325B27551EA9DC5300AE83A3 /* FMDataManager */,
 				325B276A1EA9E1E000AE83A3 /* DTSViewManager */,
@@ -874,6 +900,7 @@
 		3268254F1D9B9A540049774C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				327FC0C31EB89A9A00BF025A /* NSDate */,
 				325B27821EAD9E4D00AE83A3 /* GYModelObject */,
 				325B27781EA9F01F00AE83A3 /* NSDictionary */,
 				325B27741EA9E51600AE83A3 /* MBProgressHUD */,
@@ -936,6 +963,45 @@
 				326825421D9B7C7D0049774C /* Assets.xcassets */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		327FC0AB1EB8974400BF025A /* FMScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				327FC0AC1EB8975100BF025A /* FMScrollView.h */,
+				327FC0AD1EB8975100BF025A /* FMScrollView.m */,
+				327FC0AE1EB8975100BF025A /* FMScrollViewCell.h */,
+				327FC0AF1EB8975100BF025A /* FMScrollViewCell.m */,
+				327FC0B01EB8975100BF025A /* FMScrollViewManager.h */,
+				327FC0B11EB8975100BF025A /* FMScrollViewManager.m */,
+				327FC0B21EB8975100BF025A /* PZRefreshControl */,
+			);
+			path = FMScrollView;
+			sourceTree = "<group>";
+		};
+		327FC0B21EB8975100BF025A /* PZRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				327FC0B31EB8975100BF025A /* PZPathAnimCircleRefreshControl.h */,
+				327FC0B41EB8975100BF025A /* PZPathAnimCircleRefreshControl.m */,
+				327FC0B51EB8975100BF025A /* PZRefreshControl.h */,
+				327FC0B61EB8975100BF025A /* PZRefreshControl.m */,
+				327FC0B71EB8975100BF025A /* PZRefreshControlDefaultStyle.h */,
+				327FC0B81EB8975100BF025A /* PZRefreshControlDefaultStyle.m */,
+				327FC0B91EB8975100BF025A /* PZRefreshControlStyle.h */,
+				327FC0BA1EB8975100BF025A /* PZRefreshNormalControl.h */,
+				327FC0BB1EB8975100BF025A /* PZRefreshNormalControl.m */,
+			);
+			path = PZRefreshControl;
+			sourceTree = "<group>";
+		};
+		327FC0C31EB89A9A00BF025A /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				327FC0C41EB89A9A00BF025A /* NSDate+Utils.h */,
+				327FC0C51EB89A9A00BF025A /* NSDate+Utils.m */,
+			);
+			path = NSDate;
 			sourceTree = "<group>";
 		};
 		32CDC25F1DAE33D400FAEA33 /* DOUAudioStreamer */ = {
@@ -1133,6 +1199,7 @@
 				325B27851EAD9E4D00AE83A3 /* GYModelObject+DTSPersistentProperties.m in Sources */,
 				322972381DA8F90E009A65A1 /* UIImage+ImageEffects.m in Sources */,
 				32F574CB1DA5E41300F38CBE /* GCDTimer.m in Sources */,
+				327FC0C21EB8975100BF025A /* PZRefreshNormalControl.m in Sources */,
 				32CDC2621DAE33ED00FAEA33 /* Track.m in Sources */,
 				324B19CB1DA7814F003959FE /* FMTabBar.m in Sources */,
 				32061DC61D9CB9CD00E07438 /* PresentAnimator.m in Sources */,
@@ -1159,10 +1226,12 @@
 				32061D8A1D9BA63100E07438 /* FMSongMenuViewController.m in Sources */,
 				32061D911D9BAD3600E07438 /* FMPublicMusictablesModel.m in Sources */,
 				322972331DA79752009A65A1 /* DismissingAnimator.m in Sources */,
+				327FC0C11EB8975100BF025A /* PZRefreshControlDefaultStyle.m in Sources */,
 				325B27711EA9E1E000AE83A3 /* DTSViewManager.m in Sources */,
 				32061DB91D9CB76300E07438 /* PushAnimator.m in Sources */,
 				32061D981D9BD35200E07438 /* LineBackgroundView.m in Sources */,
 				32061DA81D9CAE5500E07438 /* FMPublicSonglistModel.m in Sources */,
+				327FC0C01EB8975100BF025A /* PZRefreshControl.m in Sources */,
 				325657711DC720B70098E23E /* FMRankSonglistModel.m in Sources */,
 				32061DFB1D9CC9FF00E07438 /* UIView+distribute.m in Sources */,
 				324B19CE1DA7816A003959FE /* FMTabBarButton.m in Sources */,
@@ -1181,6 +1250,7 @@
 				32061DCC1D9CBA4000E07438 /* FMPublicTableView.m in Sources */,
 				3239FD8E1DC07B7100BDE9E2 /* FMRankSongViewController.m in Sources */,
 				325B277F1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m in Sources */,
+				327FC0C61EB89A9A00BF025A /* NSDate+Utils.m in Sources */,
 				3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */,
 				325B27581EA9DC6B00AE83A3 /* FMDataManager.m in Sources */,
 				324B19C71DA780ED003959FE /* FMTabBarViewController.m in Sources */,
@@ -1202,14 +1272,18 @@
 				3202C9141DA4961D00159226 /* UIFont+Fonts.m in Sources */,
 				325B275C1EA9DF8400AE83A3 /* NSObject+Utils.m in Sources */,
 				32061D811D9BA5B300E07438 /* FMLocalMusicViewController.m in Sources */,
+				327FC0BF1EB8975100BF025A /* PZPathAnimCircleRefreshControl.m in Sources */,
 				3229722D1DA79600009A65A1 /* Easing.c in Sources */,
 				3207A9B41DB0C5900057BE67 /* FMMusicHandler.m in Sources */,
 				32FCA4E91DA4E8BD0080D550 /* NSString+date.m in Sources */,
 				324B19C11DA78093003959FE /* CustomTabBarViewController.m in Sources */,
 				32061D6E1D9B9CEF00E07438 /* FMStaticConstant.m in Sources */,
+				327FC0BD1EB8975100BF025A /* FMScrollViewCell.m in Sources */,
 				326825381D9B7C7D0049774C /* main.m in Sources */,
+				327FC0BC1EB8975100BF025A /* FMScrollView.m in Sources */,
 				32061DB61D9CB71E00E07438 /* TransitionAnimator.m in Sources */,
 				32CDC25A1DADDB7E00FAEA33 /* FMMusicSlider.m in Sources */,
+				327FC0BE1EB8975100BF025A /* FMScrollViewManager.m in Sources */,
 				324B19BF1DA78093003959FE /* CustomNavigationController.m in Sources */,
 				32061DCF1D9CBAFF00E07438 /* FMPublicTableViewCell.m in Sources */,
 			);

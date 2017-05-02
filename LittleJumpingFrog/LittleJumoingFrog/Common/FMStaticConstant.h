@@ -30,6 +30,8 @@ extern  NSString * const  FMUrl;
 
 extern  NSString * const  FMMusic;
 
+extern  NSString * const  DTSNOTIFI_RUNTIME_ERROR;
+
 extern  CGFloat    const  getScreenHeight();
 
 extern  CGFloat    const  getScreenWidth();

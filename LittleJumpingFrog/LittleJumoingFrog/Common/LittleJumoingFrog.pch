@@ -20,6 +20,8 @@
 #import "GCD.h"
 #import "DTSViewManager.h"
 #import "FMDataManager.h"
+
 #import "MBProgressHUD+DTS.h"
+#import "UIView+SetRect.h"
 
 #endif /* LittleJumoingFrog_pch */

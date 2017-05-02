@@ -50,6 +50,31 @@
     return object?object:defvalue;
 }
 
+- (void)fetchDataFromServerWithDataMethod:(NSString *)dataMethod page:(NSInteger)page otherParams:(NSMutableDictionary *)otherParams success:(void (^)(id data, NSInteger totalPage))success failed:(void (^)(NSString * message)) failed{
+    
+    SEL aSelector = NSSelectorFromString(dataMethod);
+    
+    if([self respondsToSelector:aSelector]) {
+        
+        NSLog(@"fetchDataFromServerWithDataMethod success :%@",dataMethod);
+        
+        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];
+        [inv setSelector:aSelector];
+        [inv setTarget:self];
+        
+        [inv setArgument:&(page) atIndex:2];
+        [inv setArgument:&(otherParams) atIndex:3];
+        [inv setArgument:&(success) atIndex:4];
+        [inv setArgument:&(failed) atIndex:5];
+        
+        [inv invoke];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DTSNOTIFI_RUNTIME_ERROR object:[NSString stringWithFormat:@"Method not exist: %@",dataMethod]];
+        NSLog(@"fetchDataFromServerWithDataMethod failed :%@",dataMethod);
+    }
+}
+
+
 - (void)getRankListSuccess:(void (^)(id data))success
                     failed:(void (^)(NSString * message)) failed{
     

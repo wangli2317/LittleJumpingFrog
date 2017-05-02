@@ -24,6 +24,12 @@
 
 - (id  )getValueForKey:(NSString *)key defvalue:(id)defvalue;
 
+- (void)fetchDataFromServerWithDataMethod:(NSString *)dataMethod
+                                     page:(NSInteger)page
+                              otherParams:(NSMutableDictionary *)otherParams
+                                  success:(void (^)(id data, NSInteger totalPage))success
+                                   failed:(void (^)(NSString * message)) failed;
+
 - (void)getRankListSuccess:(void (^)(id data))success
                     failed:(void (^)(NSString * message)) failed;
 
