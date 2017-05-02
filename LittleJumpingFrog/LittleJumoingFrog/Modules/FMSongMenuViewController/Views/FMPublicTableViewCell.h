@@ -27,11 +27,11 @@ typedef enum : NSUInteger {
 @end
 
 @interface FMPublicTableViewCell : UITableViewCell
-@property (nonatomic ,weak) id<PublicTableViewCellDelegate> delegate;
-@property (nonatomic ,assign) BOOL isOpenMenu;
-@property (nonatomic ,weak) UIButton *menuButton;
+@property (nonatomic ,weak  ) id<PublicTableViewCellDelegate  > delegate;
+@property (nonatomic ,assign) BOOL                          isOpenMenu;
+@property (nonatomic ,weak  ) UIButton                      *menuButton;
 @property (nonatomic, assign) NAKPlaybackIndicatorViewState indicatorViewState;
-@property (nonatomic ,weak) FMPublicSongDetailModel *detailModel;
+@property (nonatomic ,weak  ) FMPublicSongDetailModel       *detailModel;
 - (void)setUpCellMenu;
 + (instancetype)publicTableViewCellcellWithTableView:(UITableView *)tableView;
 

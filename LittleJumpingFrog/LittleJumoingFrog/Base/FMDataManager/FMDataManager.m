@@ -187,4 +187,23 @@
     }];
     
 }
+
+- (void)downLoadMp3WithUrl:(NSString *)url
+               Success:(void (^)(id data))success
+                failed:(void (^)(NSString * message)) failed
+              progress:(void (^)(CGFloat progress))progress{
+    [[FMNetManager manager]downloadWithUrl:url success:^(id  _Nonnull data, NSString * _Nonnull message) {
+        if (success) {
+            success(data);
+        }
+    } failed:^(NSString * _Nonnull message) {
+        if (failed) {
+            failed(message);
+        }
+    } progress:^(CGFloat downloadProgress) {
+        if (progress) {
+            progress(downloadProgress);
+        }
+    }];
+}
 @end

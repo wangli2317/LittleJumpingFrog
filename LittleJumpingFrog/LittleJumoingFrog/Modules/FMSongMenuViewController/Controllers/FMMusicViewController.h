@@ -18,15 +18,17 @@
 @end
 
 @interface FMMusicViewController : CustomViewController
-@property (nonatomic, strong) NSMutableArray *musicEntities;
-@property (nonatomic, copy) NSString *musicTitle;
-@property (nonatomic, strong) DOUAudioStreamer *streamer;
-@property (nonatomic, assign) BOOL dontReloadMusic;
-@property (nonatomic, assign) NSInteger specialIndex;
-@property (nonatomic, copy) NSNumber *parentId;
-@property (nonatomic, weak) id<FMMusicViewControllerDelegate> delegate;
-@property (nonatomic, assign) BOOL isNotPresenting;
-@property (nonatomic, assign) FMMusicCycleType musicCycleType;
+@property (nonatomic, strong) NSMutableArray                *musicEntities;
+@property (nonatomic, copy  ) NSString                      *musicTitle;
+@property (nonatomic, strong) DOUAudioStreamer              *streamer;
+@property (nonatomic, assign) BOOL                          dontReloadMusic;
+@property (nonatomic, assign) NSInteger                     specialIndex;
+@property (nonatomic, copy  ) NSNumber                      *parentId;
+@property (nonatomic, assign) BOOL                          isNotPresenting;
+@property (nonatomic, assign) FMMusicCycleType              musicCycleType;
+
+@property (nonatomic, weak  ) id<FMMusicViewControllerDelegate> delegate;
+
 + (instancetype)sharedInstance;
 - (void)playPreviousMusic:(id)sender;
 - (void)playNextMusic:(id)sender;

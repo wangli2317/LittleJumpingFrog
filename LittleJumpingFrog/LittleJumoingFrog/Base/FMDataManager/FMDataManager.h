@@ -20,9 +20,9 @@
 
 - (void)setString:(NSString *)string ForKey:(NSString *)key;
 
-- (id)getValueForKey:(NSString *)key;
+- (id  )getValueForKey:(NSString *)key;
 
-- (id)getValueForKey:(NSString *)key defvalue:(id)defvalue;
+- (id  )getValueForKey:(NSString *)key defvalue:(id)defvalue;
 
 - (void)getRankListSuccess:(void (^)(id data))success
                     failed:(void (^)(NSString * message)) failed;
@@ -46,5 +46,9 @@
                              type:(NSString *)type
                           Success:(void (^)(id data))success
                            failed:(void (^)(NSString * message)) failed;
-    
+
+- (void)downLoadMp3WithUrl:(NSString *)url
+                   Success:(void (^)(id data))success
+                    failed:(void (^)(NSString * message)) failed
+                  progress:(void (^)(CGFloat progress))progress;
 @end

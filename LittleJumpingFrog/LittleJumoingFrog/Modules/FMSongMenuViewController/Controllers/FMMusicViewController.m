@@ -17,38 +17,38 @@
 #import "UIView+Animations.h"
 #import "NSString+Additions.h"
 
-static void *kStatusKVOKey = &kStatusKVOKey;
-static void *kDurationKVOKey = &kDurationKVOKey;
+static void *kStatusKVOKey         = &kStatusKVOKey;
+static void *kDurationKVOKey       = &kDurationKVOKey;
 static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @interface FMMusicViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumImageLeftConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumImageRightConstraint;
-@property (weak, nonatomic) IBOutlet UIButton *musicMenuButton;
-@property (weak, nonatomic) IBOutlet FMMusicSlider *musicSlider;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroudImageView;
-@property (weak, nonatomic) IBOutlet UIView *backgroudView;
-@property (weak, nonatomic) IBOutlet UIImageView *albumImageView;
-@property (weak, nonatomic) IBOutlet UILabel *musicNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *singerLabel;
-@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
-@property (weak, nonatomic) IBOutlet UILabel *musicTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *beginTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *previousMusicButton;
-@property (weak, nonatomic) IBOutlet UIButton *nextMusicButton;
-@property (weak, nonatomic) IBOutlet UIButton *musicToggleButton;
-@property (weak, nonatomic) IBOutlet UIButton *musicCycleButton;
-@property (strong, nonatomic) FMMusicModel *musicEntity;
-@property (strong, nonatomic) UIVisualEffectView *visualEffectView;
-@property (strong, nonatomic) FMMusicIndicator *musicIndicator;
-@property (strong, nonatomic) NSMutableArray *originArray;
-@property (strong, nonatomic) NSMutableArray *randomArray;
-@property (strong, nonatomic) NSMutableString *lastMusicUrl;
+@property (weak, nonatomic  ) IBOutlet NSLayoutConstraint    *albumImageLeftConstraint;
+@property (weak, nonatomic  ) IBOutlet NSLayoutConstraint    *albumImageRightConstraint;
+@property (weak, nonatomic  ) IBOutlet UIButton              *musicMenuButton;
+@property (weak, nonatomic  ) IBOutlet FMMusicSlider         *musicSlider;
+@property (weak, nonatomic  ) IBOutlet UIImageView           *backgroudImageView;
+@property (weak, nonatomic  ) IBOutlet UIView                *backgroudView;
+@property (weak, nonatomic  ) IBOutlet UIImageView           *albumImageView;
+@property (weak, nonatomic  ) IBOutlet UILabel               *musicNameLabel;
+@property (weak, nonatomic  ) IBOutlet UILabel               *singerLabel;
+@property (weak, nonatomic  ) IBOutlet UIButton              *favoriteButton;
+@property (weak, nonatomic  ) IBOutlet UILabel               *musicTitleLabel;
+@property (weak, nonatomic  ) IBOutlet UILabel               *beginTimeLabel;
+@property (weak, nonatomic  ) IBOutlet UILabel               *endTimeLabel;
+@property (weak, nonatomic  ) IBOutlet UIButton              *previousMusicButton;
+@property (weak, nonatomic  ) IBOutlet UIButton              *nextMusicButton;
+@property (weak, nonatomic  ) IBOutlet UIButton              *musicToggleButton;
+@property (weak, nonatomic  ) IBOutlet UIButton              *musicCycleButton;
+@property (strong, nonatomic) FMMusicModel          *musicEntity;
+@property (strong, nonatomic) UIVisualEffectView    *visualEffectView;
+@property (strong, nonatomic) FMMusicIndicator      *musicIndicator;
+@property (strong, nonatomic) NSMutableArray        *originArray;
+@property (strong, nonatomic) NSMutableArray        *randomArray;
+@property (strong, nonatomic) NSMutableString       *lastMusicUrl;
 
-@property (nonatomic) NSTimer *musicDurationTimer;
-@property (nonatomic) BOOL musicIsPlaying;
-@property (nonatomic) NSInteger currentIndex;
+@property (nonatomic        ) NSTimer               *musicDurationTimer;
+@property (nonatomic        ) BOOL                  musicIsPlaying;
+@property (nonatomic        ) NSInteger             currentIndex;
 
 @end
 
@@ -71,10 +71,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [super viewDidLoad];
     [self adapterIphone4];
     _musicDurationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateSliderValue:) userInfo:nil repeats:YES];
-    _currentIndex = 0;
-    _musicIndicator = [FMMusicIndicator shareIndicator];
-    _originArray = @[].mutableCopy;
-    _randomArray = [[NSMutableArray alloc] initWithCapacity:0];
+    _currentIndex       = 0;
+    _musicIndicator     = [FMMusicIndicator shareIndicator];
+    _originArray        = @[].mutableCopy;
+    _randomArray        = [[NSMutableArray alloc] initWithCapacity:0];
     [self addPanRecognizer];
 }
 
@@ -119,7 +119,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 - (void)adapterIphone4 {
     if (iphone4x_3_5) {
         CGFloat margin = 65;
-        _albumImageLeftConstraint.constant = margin;
+        _albumImageLeftConstraint.constant  = margin;
         _albumImageRightConstraint.constant = margin;
     }
 }
@@ -152,10 +152,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)setupMusicViewWithMusicEntity:(FMMusicModel *)entity {
-    _musicEntity = entity;
-    _musicNameLabel.text = _musicEntity.songName;
-    _musicTitle = _musicEntity.songName;
-    _singerLabel.text = _musicEntity.artistName;
+    _musicEntity          = entity;
+    _musicNameLabel.text  = _musicEntity.songName;
+    _musicTitle           = _musicEntity.songName;
+    _singerLabel.text     = _musicEntity.artistName;
     _musicTitleLabel.text = _musicTitle;
     [self setupBackgroudImage];
     [self checkMusicFavoritedIcon];
@@ -208,8 +208,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
     if(![_visualEffectView isDescendantOfView:_backgroudView]) {
         UIVisualEffect *blurEffect;
-        blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        _visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffect              = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _visualEffectView       = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         _visualEffectView.frame = self.view.bounds;
         [_backgroudView addSubview:_visualEffectView];
         [_backgroudView addSubview:self.visualEffectView];
@@ -221,7 +221,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)addPanRecognizer {
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchDismissButton:)];
-    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    swipeRecognizer.direction                 = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeRecognizer];
 }
 
@@ -407,7 +407,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)updateBufferingStatus {
-
 }
 
 - (void)invalidMusicDurationTimer {
@@ -432,8 +431,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     Track *track = [[Track alloc] init];
 
     track.audioFileURL = [NSURL URLWithString:_musicEntity.songLink];
-    
-    
+
     @try {
         [self removeStreamerObserver];
     } @catch(id anException){

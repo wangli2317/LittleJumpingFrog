@@ -66,11 +66,11 @@ typedef NS_ENUM(NSInteger) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FMPublicSongDetailModel *songDetail = self.songListArrayM[indexPath.row];
-    FMPublicTableViewCell *cell = [FMPublicTableViewCell publicTableViewCellcellWithTableView:tableView];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.menuButton.tag = indexPath.row;
-    cell.detailModel = songDetail;
-    cell.delegate = self;
+    FMPublicTableViewCell *cell         = [FMPublicTableViewCell publicTableViewCellcellWithTableView:tableView];
+    cell.backgroundColor                = [UIColor clearColor];
+    cell.menuButton.tag                 = indexPath.row;
+    cell.detailModel                    = songDetail;
+    cell.delegate                       = self;
     [self updatePlaybackIndicatorOfCell:cell];
     [cell setUpCellMenu];
     return cell;
@@ -118,13 +118,13 @@ typedef NS_ENUM(NSInteger) {
     }
 }
 
-- (void)clickCellMenuItemAtIndex:(NSInteger)index Cell:(FMPublicTableViewCell *)cell{
+- (void)clickCellMenuItemAtIndex:(NSInteger)cellIndex Cell:(FMPublicTableViewCell *)cell{
     // 点击后自动关闭
     self.isOpenCell = nil;
     [self reloadRowsAtIndexPaths:@[self.opendCellIndex] withRowAnimation:UITableViewRowAnimationFade];
     self.opendCellIndex = nil;
     
-    switch (index) {
+    switch (cellIndex) {
         case FavoriteItem:
             NSLog(@"点击了收藏");
             [FMPromptTool promptModeText:@"已收藏" afterDelay:1];
@@ -133,10 +133,48 @@ typedef NS_ENUM(NSInteger) {
             NSLog(@"点击了专辑");
             [FMPromptTool promptModeText:@"暂无专辑信息" afterDelay:1];
             break;
-        case DownLoadItem:
+        case DownLoadItem:{
             NSLog(@"点击了下载");
-            [FMPromptTool promptModeText:@"暂时无法下载" afterDelay:1];
-            break;
+            
+            FMPublicSongDetailModel *songDetail = cell.detailModel;
+            
+            NSInteger index = [self.songListArrayM indexOfObject:songDetail];
+            
+            __weak typeof(self) weakSelf = self;
+            
+            [[FMDataManager manager]getPublicListWithSongId:songDetail.song_id Success:^(FMMusicModel * musicEntity) {
+                
+                __strong typeof(weakSelf)strongSelf = weakSelf;
+                
+                [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
+                
+                [[FMDataManager manager]downLoadMp3WithUrl:musicEntity.songLink Success:^(id data) {
+                    
+                    musicEntity.songLink = data;
+                    [musicEntity save];
+                    
+                    [GCDQueue executeInMainQueue:^{
+                        [FMPromptTool promptModeText:@"下载完成" afterDelay:1];
+                    }];
+                } failed:^(NSString *message) {
+                    
+                    [GCDQueue executeInMainQueue:^{
+                        [FMPromptTool promptModeText:@"下载失败" afterDelay:1];
+                    }];
+                    
+                } progress:^(CGFloat progress) {
+                    NSLog(@"%f",progress);
+                }];
+
+                
+            } failed:^(NSString *message) {
+                [GCDQueue executeInMainQueue:^{
+                    [MBProgressHUD showError:message];
+                }];
+            }];
+            
+            
+        }break;
         case SingerOperation:
             NSLog(@"点击了歌手");
             [FMPromptTool promptModeText:@"暂无歌手信息" afterDelay:1];

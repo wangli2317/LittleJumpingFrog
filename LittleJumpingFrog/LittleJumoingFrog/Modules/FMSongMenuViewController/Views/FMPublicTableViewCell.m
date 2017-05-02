@@ -19,18 +19,18 @@
 #import "UIFont+Fonts.h"
 
 @interface FMPublicTableViewCell ()
-@property (nonatomic ,weak) UIView *mainView;
-@property (nonatomic ,weak) UILabel *numLabel;
-@property (nonatomic ,weak) UILabel *titleLabel;
-@property (nonatomic ,weak) UILabel *authorLabel;
-@property (nonatomic ,weak) UILabel *album_titleLabel;
-@property (nonatomic ,weak) NAKPlaybackIndicatorView *indicatorView;
-@property (nonatomic ,weak) UIView *menuView;
-@property (nonatomic ,assign) BOOL isLoadedMenu;
-@property (nonatomic ,strong) NSArray *cellMenuItemArray;
+@property (nonatomic ,weak  ) UIView                   *mainView;
+@property (nonatomic ,weak  ) UILabel                  *numLabel;
+@property (nonatomic ,weak  ) UILabel                  *titleLabel;
+@property (nonatomic ,weak  ) UILabel                  *authorLabel;
+@property (nonatomic ,weak  ) UILabel                  *album_titleLabel;
+@property (nonatomic ,weak  ) NAKPlaybackIndicatorView *indicatorView;
+@property (nonatomic ,weak  ) UIView                   *menuView;
+@property (nonatomic ,assign) BOOL                     isLoadedMenu;
+@property (nonatomic ,strong) NSArray                  *cellMenuItemArray;
 
-@property (nonatomic, strong) UIView       *lineView;
-@property (nonatomic, strong) UIView       *rectView;
+@property (nonatomic, strong) UIView                   *lineView;
+@property (nonatomic, strong) UIView                   *rectView;
 
 @end
 
@@ -73,33 +73,33 @@ static NSInteger ItemNum = 5;
     if (self = [super initWithFrame:frame]) {
         
         //不设置会全部显示为下拉菜单
-        self.layer.masksToBounds = YES;
-        self.clipsToBounds = YES;
-        self.selectionStyle = UITableViewCellEditingStyleNone;
+        self.layer.masksToBounds      = YES;
+        self.clipsToBounds            = YES;
+        self.selectionStyle           = UITableViewCellEditingStyleNone;
         [self setUpMainView];
         [self setUpButtonAndLine];
         [self setUpIndicator];
-        self.menuView = [FMCreatTool viewWithView:self.mainView];
+        self.menuView                 = [FMCreatTool viewWithView:self.mainView];
         self.menuView.backgroundColor = [UIColor clearColor];
-        self.tintColor = FMTintColor;
+        self.tintColor                = FMTintColor;
         
     }
     return self;
 }
 
 - (void)setUpMainView{
-    self.mainView = [FMCreatTool viewWithView:self];
-    
-    self.numLabel = [FMCreatTool labelWithView:self.mainView];
-    self.numLabel.textColor = [[UIColor redColor] colorWithAlphaComponent:0.65f];
-    self.numLabel.font = [UIFont fontWithName:@"GillSans-Italic" size:16.f];
-    
-    self.titleLabel = [FMCreatTool labelWithView:self.contentView];
-    self.titleLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.65f];
-    self.titleLabel.font = [UIFont HeitiSCWithFontSize:16.f];
-    
-    self.authorLabel = [FMCreatTool labelWithView:self.mainView];
-    self.authorLabel.font = FMMiddleFont;
+    self.mainView              = [FMCreatTool viewWithView:self];
+
+    self.numLabel              = [FMCreatTool labelWithView:self.mainView];
+    self.numLabel.textColor    = [[UIColor redColor] colorWithAlphaComponent:0.65f];
+    self.numLabel.font         = [UIFont fontWithName:@"GillSans-Italic" size:16.f];
+
+    self.titleLabel            = [FMCreatTool labelWithView:self.contentView];
+    self.titleLabel.textColor  = [[UIColor blackColor] colorWithAlphaComponent:0.65f];
+    self.titleLabel.font       = [UIFont HeitiSCWithFontSize:16.f];
+
+    self.authorLabel           = [FMCreatTool labelWithView:self.mainView];
+    self.authorLabel.font      = FMMiddleFont;
     self.authorLabel.textColor = FMTextColor;
 }
 
@@ -112,9 +112,9 @@ static NSInteger ItemNum = 5;
 - (void)setUpIndicator{
     NAKPlaybackIndicatorView *indicator = [[NAKPlaybackIndicatorView alloc] init];
     [self.mainView addSubview:indicator];
-    self.indicatorView = indicator;
-    self.indicatorView.tintColor = FMRandomColor;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickIndicatorView)];
+    self.indicatorView                  = indicator;
+    self.indicatorView.tintColor        = FMRandomColor;
+    UITapGestureRecognizer *tap         = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickIndicatorView)];
     [self.indicatorView addGestureRecognizer:tap];
 }
 
@@ -180,10 +180,10 @@ static NSInteger ItemNum = 5;
         CGFloat ItemWidth = (getScreenWidth() - ItemPadding * (ItemNum + 1)) / ItemNum;
         __weak __typeof(self) weakSelf = self;
         for (NSInteger i = 0; i < ItemNum; i++) {
-            FMPublicCellIconModel *iconModel = self.cellMenuItemArray[i];
-            CGRect rect = CGRectMake(ItemPadding + (ItemPadding + ItemWidth) * i, 0, ItemWidth, 44);
+            FMPublicCellIconModel *iconModel   = self.cellMenuItemArray[i];
+            CGRect rect                        = CGRectMake(ItemPadding + (ItemPadding + ItemWidth) * i, 0, ItemWidth, 44);
             FMPublicCellMenuItemButton *button = [[FMPublicCellMenuItemButton    alloc] initWithFrame:rect model:iconModel];
-            button.tag = i;
+            button.tag                         = i;
             [button addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
             [weakSelf.menuView addSubview:button];
         }
@@ -193,7 +193,7 @@ static NSInteger ItemNum = 5;
 
 #pragma mark - delegate
 - (void)clickItem:(UIButton *)button{
-    if ([self.delegate respondsToSelector:@selector(clickCellMenuItemAtIndex: Cell:)]) {
+    if ([self.delegate respondsToSelector:@selector(clickCellMenuItemAtIndex:Cell:)]) {
         [self.delegate clickCellMenuItemAtIndex:button.tag Cell:self];
     }
 }

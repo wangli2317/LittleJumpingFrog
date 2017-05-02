@@ -184,7 +184,7 @@ NSInteger const retry = 10;
         } else {
             if (success)
             {
-                success(filePath.lastPathComponent,@"下载完成");
+                success(filePath.absoluteString,@"下载完成");
             }
             
         }
