@@ -75,15 +75,15 @@
 #pragma mark - loadData
 - (void)loadRankData{
     
-    __weak typeof(self) weakSelf  = self;
+    @weakify(self)
     [[FMDataManager manager] getRankListSuccess:^(id data) {
         
-        __strong typeof(weakSelf)strongSelf = weakSelf;
+        @strongify(self)
         
-        strongSelf.rankListArray = data;
+        self.rankListArray = data;
         
         [GCDQueue executeInMainQueue:^{
-            [strongSelf.tableView reloadData];
+            [self.tableView reloadData];
         }];
     
     } failed:^(NSString *message) {

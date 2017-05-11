@@ -55,11 +55,12 @@
 
 
 - (void)setUpRefreshFooter{
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     self.publicTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        weakSelf.songMenuPage += 1;
-        [weakSelf loadRankDetail];
-        weakSelf.publicTableView.mj_footer.hidden = YES;
+        @strongify(self)
+        self.songMenuPage += 1;
+        [self loadRankDetail];
+        self.publicTableView.mj_footer.hidden = YES;
     }];
 }
 
@@ -89,12 +90,11 @@
  
     NSInteger offset = _songMenuPage * 30;
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self)
     
     [[FMDataManager manager] getRankSongListWithOffset:offset type:self.rankType.type Success:^(id data) {
         
-        __strong typeof(weakSelf)strongSelf = weakSelf;
-        
+        @strongify(self)
         
         NSArray *songList = data[@"song_list"];
         NSInteger i = offset;
@@ -108,25 +108,25 @@
             
             FMPublicSongDetailModel *songDetail = [FMPublicSongDetailModel modelWithJSON:dict];
             songDetail.num = ++i;
-            [strongSelf.rankArray addObject:songDetail];
-            [strongSelf.songIds addObject:songDetail.song_id];
+            [self.rankArray addObject:songDetail];
+            [self.songIds addObject:songDetail.song_id];
             
         }
         
         
         [GCDQueue executeInMainQueue:^{
             
-            strongSelf.publicTableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
+            self.publicTableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
             
-            strongSelf.headView.frame =CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
+            self.headView.frame =CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
             
-            strongSelf.publicTableView.tableHeaderView = self.headView;
+            self.publicTableView.tableHeaderView = self.headView;
             
-            strongSelf.headView.songListModel = rankSongListModel;
+            self.headView.songListModel = rankSongListModel;
             
-            [strongSelf.publicTableView setSongList:_rankArray songIds:_songIds listKey:_rankType.comment];
+            [self.publicTableView setSongList:_rankArray songIds:_songIds listKey:_rankType.comment];
             
-            [strongSelf.publicTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [self.publicTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
             
             
         }];

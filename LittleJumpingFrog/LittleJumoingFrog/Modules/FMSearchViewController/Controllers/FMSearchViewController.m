@@ -23,13 +23,12 @@
 
 - (void)loadSearchData{
     
-    __weak typeof(self) weakSelf  = self;
+    @weakify(self)
     
     [[FMDataManager manager]getHotSearchesSuccess:^(id data) {
         
-        __strong typeof(weakSelf)strongSelf = weakSelf;
-        
-         [strongSelf setValue:data forKey:@"hotSearches"];
+        @strongify(self)
+         [self setValue:data forKey:@"hotSearches"];
         
     } failed:^(NSString *message) {
        [GCDQueue executeInMainQueue:^{

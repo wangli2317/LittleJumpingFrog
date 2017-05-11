@@ -134,7 +134,9 @@
  
     switch (self.status) {
         case CoreNetWorkStatusNone:
-            [MBProgressHUD showSuccess:@"当前无网络"];
+            [GCDQueue executeInMainQueue:^{
+                [MBProgressHUD showSuccess:@"当前无网络"];
+            }];
             break;
         case CoreNetWorkStatusWifi:
         case CoreNetWorkStatusWWAN:
@@ -142,7 +144,10 @@
         case CoreNetWorkStatus3G:
         case CoreNetWorkStatus4G:
         case CoreNetWorkStatusUnkhow:
-            [MBProgressHUD showSuccess:@"网络已连接"];
+            [GCDQueue executeInMainQueue:^{
+                 [MBProgressHUD showSuccess:@"网络已连接"];
+            }];
+           
             break;
 
         default:

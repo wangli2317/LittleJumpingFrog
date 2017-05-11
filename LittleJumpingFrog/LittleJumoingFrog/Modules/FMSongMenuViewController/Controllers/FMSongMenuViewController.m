@@ -96,29 +96,32 @@ static NSString *reuseId = @"songMenu";
 }
 
 - (void)setUpRefreshFooter{
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
+    
     self.songMenuTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        __strong typeof(weakSelf)strongSelf = weakSelf;
-        strongSelf.songMenuPage += 1;
-        [strongSelf loadSongMenuWithPage:strongSelf.songMenuPage array:strongSelf.songMenuDataArrayM reloadView:strongSelf.songMenuTableView];
-        weakSelf.songMenuTableView.mj_footer.hidden = YES;
+        @strongify(self)
+        
+        self.songMenuPage += 1;
+        [self loadSongMenuWithPage:self.songMenuPage array:self.songMenuDataArrayM reloadView:self.songMenuTableView];
     }];
 }
+
 
 
 #pragma mark - loadData
 - (void)loadSongMenuWithPage:(NSInteger)page array:(NSMutableArray *)array reloadView:(UITableView *)view{
    
-     __weak __typeof(self) weakSelf = self;
+     @weakify(self)
     [[FMDataManager manager]getSongMenuWithPage:page Success:^(NSArray * modelArray) {
-        __strong typeof(weakSelf)strongSelf = weakSelf;
+       @strongify(self)
         if (modelArray.count > 0) {
             [array addObjectsFromArray:modelArray];
             
             [view reloadData];
-        }else{
-            [strongSelf.songMenuTableView.mj_footer endRefreshingWithNoMoreData];
         }
+
+        [self.songMenuTableView.mj_footer endRefreshing];
+
     } failed:^(NSString *message) {
         
         [GCDQueue executeInMainQueue:^{

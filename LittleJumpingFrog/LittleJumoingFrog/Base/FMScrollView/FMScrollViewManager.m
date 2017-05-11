@@ -193,63 +193,63 @@
             }
         }
         
-        __weak __typeof(self)wself = self;
+        @weakify(self)
         [[FMDataManager manager] fetchDataFromServerWithDataMethod:self.dataMethod page:self.page otherParams:self.otherParams success:^(id data, NSInteger totalPage) {
-            __strong __typeof(wself)strongSelf = wself;
+            @strongify(self)
             
-            strongSelf.totalPage = totalPage;
+            self.totalPage = totalPage;
             
-            if(strongSelf.scrollView.reloading || strongSelf.needRefresh){
-                strongSelf.needRefresh = NO;
+            if(self.scrollView.reloading || self.needRefresh){
+                self.needRefresh = NO;
                 //[self.scrollView doneReloadingTableViewData];
-                [strongSelf.scrollView clearDataForNew];
-                [strongSelf.vdelegate afterReloadScrollView];
+                [self.scrollView clearDataForNew];
+                [self.vdelegate afterReloadScrollView];
             }
             
             
             NSUInteger count = [data count];
             if(count==0){
-                if(strongSelf.page==1){
-                    if(strongSelf.showLoading){
+                if(self.page==1){
+                    if(self.showLoading){
                         //TODO: add No Data view
                     }
                 }
-                if ([strongSelf.vdelegate respondsToSelector:@selector(afterLoadDataSource)]) {
-                    [strongSelf.vdelegate afterLoadDataSource];
+                if ([self.vdelegate respondsToSelector:@selector(afterLoadDataSource)]) {
+                    [self.vdelegate afterLoadDataSource];
                 }
             }else{
                 NSMutableArray *rss = [[NSMutableArray alloc] init];
                 for (NSInteger i = 0; i<[data count]; i++) {
                     [rss addObject:[data objectAtIndex:i]];
                 }
-                [strongSelf.scrollView append:rss];
-                if (strongSelf.page == 1) {
-                    strongSelf.lastUpDateTime = [NSDate getTimeSp];
+                [self.scrollView append:rss];
+                if (self.page == 1) {
+                    self.lastUpDateTime = [NSDate getTimeSp];
                 }
-                [strongSelf.otherParams setValue:@(strongSelf.lastUpDateTime) forKey:@"lastUpDateTime"];
+                [self.otherParams setValue:@(self.lastUpDateTime) forKey:@"lastUpDateTime"];
                 
             }
-            strongSelf.isLoading = NO;
+            self.isLoading = NO;
             
-            [strongSelf.scrollView finishLoading];
-            [strongSelf adjustScrollInset];
+            [self.scrollView finishLoading];
+            [self adjustScrollInset];
             
         } failed:^(NSString *message) {
             
-            __strong __typeof(wself)strongSelf = wself;
+            @strongify(self)
             NSLog(@"Faild!");
-            if ([strongSelf.vdelegate respondsToSelector:@selector(loadDataFaild)]) {
-                [strongSelf.vdelegate loadDataFaild];
+            if ([self.vdelegate respondsToSelector:@selector(loadDataFaild)]) {
+                [self.vdelegate loadDataFaild];
             }
-            if(strongSelf.page==1&&[strongSelf.scrollView itemsCount]==0){
-                if(strongSelf.showLoading){
+            if(self.page==1&&[self.scrollView itemsCount]==0){
+                if(self.showLoading){
                     //TODO: add Load Data Error
                 }
             }
             //self.isLoading = NO;
-            [strongSelf.scrollView finishLoading];
-            [strongSelf.scrollView doneReloadingTableViewData];
-            [strongSelf loadMoreCompleted];
+            [self.scrollView finishLoading];
+            [self.scrollView doneReloadingTableViewData];
+            [self loadMoreCompleted];
         }];
         
     }else{

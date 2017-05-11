@@ -178,14 +178,13 @@ static NSInteger ItemNum = 5;
 - (void)setUpCellMenu{
     if (!self.isLoadedMenu) {
         CGFloat ItemWidth = (getScreenWidth() - ItemPadding * (ItemNum + 1)) / ItemNum;
-        __weak __typeof(self) weakSelf = self;
         for (NSInteger i = 0; i < ItemNum; i++) {
             FMPublicCellIconModel *iconModel   = self.cellMenuItemArray[i];
             CGRect rect                        = CGRectMake(ItemPadding + (ItemPadding + ItemWidth) * i, 0, ItemWidth, 44);
             FMPublicCellMenuItemButton *button = [[FMPublicCellMenuItemButton    alloc] initWithFrame:rect model:iconModel];
             button.tag                         = i;
             [button addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
-            [weakSelf.menuView addSubview:button];
+            [self.menuView addSubview:button];
         }
     }
     self.isLoadedMenu = YES;

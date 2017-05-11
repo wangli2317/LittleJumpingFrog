@@ -140,13 +140,13 @@ typedef NS_ENUM(NSInteger) {
             
             NSInteger index = [self.songListArrayM indexOfObject:songDetail];
             
-            __weak typeof(self) weakSelf = self;
+            @weakify(self)
             
             [[FMDataManager manager]getPublicListWithSongId:songDetail.song_id Success:^(FMMusicModel * musicEntity) {
                 
-                __strong typeof(weakSelf)strongSelf = weakSelf;
+                 @strongify(self)
                 
-                [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
+                [self.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
                 
                 [[FMDataManager manager]downLoadMp3WithUrl:musicEntity.songLink Success:^(id data) {
                     
@@ -226,15 +226,15 @@ typedef NS_ENUM(NSInteger) {
         
     }else{
     
-        __weak typeof(self) weakSelf = self;
+        @weakify(self)
         
         [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[index] Success:^(FMMusicModel * musicEntity) {
             
-             __strong typeof(weakSelf)strongSelf = weakSelf;
+            @strongify(self)
 
-            [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
+            [self.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
             
-            [strongSelf updateIndicatorPresentMusicViewControllerWithIndexPath:indexPath musicEntity:musicEntity];
+            [self updateIndicatorPresentMusicViewControllerWithIndexPath:indexPath musicEntity:musicEntity];
             
         } failed:^(NSString *message) {
             [GCDQueue executeInMainQueue:^{
@@ -275,13 +275,13 @@ typedef NS_ENUM(NSInteger) {
 
 - (void)playMusicCellDataWithCurrentIndex:(NSInteger)currentIndex setupMusicEntity:(void (^)())setupMusicEntity{
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self)
     
     [[FMDataManager manager]getPublicListWithSongId:_songIdsArrayM[currentIndex] Success:^(FMMusicModel *musicEntity) {
         
-        __strong typeof(weakSelf)strongSelf = weakSelf;
+         @strongify(self)
         
-        [strongSelf.musicEntityArray setObject:musicEntity atIndexedSubscript:currentIndex];
+        [self.musicEntityArray setObject:musicEntity atIndexedSubscript:currentIndex];
         
         setupMusicEntity();
         

@@ -78,11 +78,11 @@
 #pragma mark - loadData
 - (void)loadSongList{
     
-    __weak typeof(self) weakSelf = self;
+   @weakify(self)
     
     [[FMDataManager manager]getSongListWithListid:self.musicModel.listid Success:^(id data) {
         
-        __strong typeof(weakSelf)strongSelf = weakSelf;
+        @strongify(self)
         
         FMPublicSonglistModel *songList = [FMPublicSonglistModel modelWithJSON:data];
         NSInteger i = 0;
@@ -94,8 +94,8 @@
             
             FMPublicSongDetailModel *songDetail = [FMPublicSongDetailModel modelWithJSON:dict];
             songDetail.num = ++i;
-            [strongSelf.songListArrayM addObject:songDetail];
-            [strongSelf.songIdsArrayM addObject:songDetail.song_id];
+            [self.songListArrayM addObject:songDetail];
+            [self.songIdsArrayM addObject:songDetail.song_id];
             
         }
         
@@ -103,15 +103,15 @@
         [GCDQueue executeInMainQueue:^{
             
             
-            strongSelf.tableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
-            strongSelf.headView.frame = CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
-            strongSelf.tableView.tableHeaderView = strongSelf.headView;
+            self.tableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
+            self.headView.frame = CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
+            self.tableView.tableHeaderView = self.headView;
             
-            [strongSelf.headView setMenuList:songList];
+            [self.headView setMenuList:songList];
             
-            [strongSelf.tableView setSongList:_songListArrayM songIds:_songIdsArrayM listKey:_musicModel.listid];
+            [self.tableView setSongList:_songListArrayM songIds:_songIdsArrayM listKey:_musicModel.listid];
             
-            [strongSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
             
         }];
 
