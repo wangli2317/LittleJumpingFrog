@@ -14,7 +14,7 @@
 #import "FMPublicSongDetailModel.h"
 #import "FMPublicSonglistModel.h"
 #import "FMMusicViewController.h"
-
+#import "FMCircleView.h"
 
 typedef NS_ENUM(NSInteger) {
     FavoriteItem = 0,
@@ -146,43 +146,82 @@ typedef NS_ENUM(NSInteger) {
                 
                  @strongify(self)
                 
-                [self.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
-                
-                [[FMDataManager manager]downLoadMp3WithUrl:musicEntity.songLink Success:^(id data) {
+                if (!musicEntity.fileSongLink || [musicEntity.fileSongLink isEqualToString:@""]) {
                     
-                    musicEntity.songLink = data;
-                    [musicEntity save];
+                    [self.musicEntityArray setObject:musicEntity atIndexedSubscript:index];
                     
-                    [GCDQueue executeInMainQueue:^{
-                        [FMPromptTool promptModeText:@"下载完成" afterDelay:1];
+                    CGFloat radius     = 80;
+                    
+                    CGPoint point2     = self.center;
+                    
+                    FMCircleView *circleView = [FMCircleView circleViewWithFrame:CGRectMake(0, 0, radius, radius) lineWidth:radius / 2.f lineColor:[UIColor blueColor]
+                                                               clockWise:YES startAngle:0];
+                    circleView.center = point2;
+                    
+                    UIView *view = [[UIView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.bounds];
+                    view.backgroundColor = UIColorFromRGBALPHA(0x000000, 0.7);
+                    [[UIApplication sharedApplication].keyWindow addSubview:view];
+                    [view addSubview:circleView];
+                    
+                    [[FMDataManager manager]downLoadMp3WithUrl:musicEntity.songLink Success:^(id data) {
+                        
+                        musicEntity.fileSongLink = data;
+                        [musicEntity save];
+                        
+                        [GCDQueue executeInMainQueue:^{
+                            [view removeFromSuperview];
+                            [FMPromptTool promptModeText:@"下载完成" afterDelay:1];
+                        }];
+                    } failed:^(NSString *message) {
+                        
+                        [GCDQueue executeInMainQueue:^{
+                            [view removeFromSuperview];
+                            [FMPromptTool promptModeText:@"下载失败" afterDelay:1];
+                        }];
+                        
+                    } progress:^(CGFloat progress) {
+                        NSLog(@"%f",progress);
+                        //进行动画
+                        [GCDQueue executeInMainQueue:^{
+                             [circleView strokeEnd:progress  animationType:ExponentialEaseInOut animated:YES duration:1.f];
+                        }];
                     }];
-                } failed:^(NSString *message) {
-                    
-                    [GCDQueue executeInMainQueue:^{
-                        [FMPromptTool promptModeText:@"下载失败" afterDelay:1];
-                    }];
-                    
-                } progress:^(CGFloat progress) {
-                    NSLog(@"%f",progress);
-                }];
 
-                
+                }else{
+                    
+                    [GCDQueue executeInMainQueue:^{
+                        [FMPromptTool promptModeText:@"您已经下载过当前歌曲" afterDelay:1];
+                    }];
+                    
+                }
             } failed:^(NSString *message) {
                 [GCDQueue executeInMainQueue:^{
                     [MBProgressHUD showError:message];
                 }];
             }];
-            
+        
             
         }break;
         case SingerOperation:
             NSLog(@"点击了歌手");
             [FMPromptTool promptModeText:@"暂无歌手信息" afterDelay:1];
             break;
-        case DeleteItem:
+        case DeleteItem:{
             NSLog(@"点击了删除");
-            [FMPromptTool promptModeText:@"无法删除网络资源" afterDelay:1];
-            break;
+            
+            FMPublicSongDetailModel *songDetail = cell.detailModel;
+            
+            [[FMDataManager manager]deleteMusicModelAndMp3WithSongID:songDetail.song_id Success:^(NSString *message) {
+               
+                 [FMPromptTool promptModeText:message afterDelay:1];
+                
+            } failed:^(NSString *message) {
+                
+                 [FMPromptTool promptModeText:message afterDelay:1];
+            }];
+
+            
+        }break;
     }
 }
 

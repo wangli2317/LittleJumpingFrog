@@ -8,9 +8,7 @@
 
 #import "FMNetManager.h"
 #import <AFNetworking.h>
-#import "FMConfigure.h"
 #import "NSObject+Utils.h"
-#import "DTSApplication.h"
 
 //超时时间
 NSInteger const retry = 10;

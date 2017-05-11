@@ -430,7 +430,15 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
     Track *track = [[Track alloc] init];
 
-    track.audioFileURL = [NSURL URLWithString:_musicEntity.songLink];
+    if (_musicEntity.fileSongLink && ![_musicEntity.fileSongLink isEqualToString:@""]) {
+        
+        track.audioFileURL = [NSURL URLWithString:_musicEntity.fileSongLink];
+    
+    }else{
+        
+        track.audioFileURL = [NSURL URLWithString:_musicEntity.songLink];
+    
+    }
 
     @try {
         [self removeStreamerObserver];

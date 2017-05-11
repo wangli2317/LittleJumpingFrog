@@ -9,6 +9,7 @@
 #import "FMDataManager.h"
 #import "FMNetManager.h"
 #import "FMMusicModel.h"
+#import "FMPublicMusictablesModel.h"
 
 @interface FMDataManager ()
 
@@ -78,85 +79,153 @@
 - (void)getRankListSuccess:(void (^)(id data))success
                     failed:(void (^)(NSString * message)) failed{
     
-    NSDictionary *params = FMParams(@"method":@"baidu.ting.billboard.billCategory",@"kflag":@"1");
-    
-    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
-        
-        NSDictionary *dataJson = data;
-        
-        NSArray *modelArray = [NSArray modelArrayWithClass:NSClassFromString(@"FMRankListModel") json:dataJson[@"content"]];
-        
-        if (success) {
-            success([modelArray modelCopy]);
-        }
-        
-    } failed:^(NSString * _Nonnull message) {
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
         
         if (failed) {
-            failed(message);
+            
+            failed(@"当前无网络, 请检查您的网络状态");
+            
         }
         
-    }];
+    }else{
+    
+        NSDictionary *params = FMParams(@"method":@"baidu.ting.billboard.billCategory",@"kflag":@"1");
+        
+        [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            
+            NSDictionary *dataJson = data;
+            
+            NSArray *modelArray = [NSArray modelArrayWithClass:NSClassFromString(@"FMRankListModel") json:dataJson[@"content"]];
+            
+            if (success) {
+                success([modelArray modelCopy]);
+            }
+            
+        } failed:^(NSString * _Nonnull message) {
+            
+            if (failed) {
+                failed(message);
+            }
+            
+        }];
+    }
 }
 
 - (void)getHotSearchesSuccess:(void (^)(id data))success
                        failed:(void (^)(NSString * message)) failed{
-    NSDictionary *params =  FMParams(@"method":@"baidu.ting.search.hot",@"page_num":@"15");
     
-    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
-        NSMutableArray *hotSeaches = [NSMutableArray array];
-        
-        for (NSDictionary *dict in data[@"result"]) {
-            [hotSeaches addObject:dict[@"word"]];
-        }
-        
-        if (success) {
-            success(hotSeaches);
-        }
-
-    } failed:^(NSString * _Nonnull message) {
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
         
         if (failed) {
-            failed(message);
+            
+            failed(@"当前无网络, 请检查您的网络状态");
+            
         }
-    }];
+        
+    }else{
     
+        NSDictionary *params =  FMParams(@"method":@"baidu.ting.search.hot",@"page_num":@"15");
+        
+        [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            NSMutableArray *hotSeaches = [NSMutableArray array];
+            
+            for (NSDictionary *dict in data[@"result"]) {
+                [hotSeaches addObject:dict[@"word"]];
+            }
+            
+            if (success) {
+                success(hotSeaches);
+            }
+
+        } failed:^(NSString * _Nonnull message) {
+            
+            if (failed) {
+                failed(message);
+            }
+        }];
+    }
 }
 
 - (void)getSongMenuWithPage:(NSInteger)page
                     Success:(void (^)(NSArray * modelArray))success
                      failed:(void (^)(NSString * message)) failed{
-    NSDictionary *params =  FMParams(@"method":@"baidu.ting.diy.gedan",@"page_no":[NSString stringWithFormat:@"%ld",page],@"page_size":@"30");
     
-    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+    NSInteger num = 30;
+    
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
         
-        NSArray *modelArray = [NSArray modelArrayWithClass:NSClassFromString(@"FMPublicMusictablesModel") json:data[@"content"]];
+        if (page == 1) {
+            NSInteger start =  (page - 1 )* num;
+            NSArray *publicMusicArray = [FMPublicMusictablesModel objectsWhere:[NSString stringWithFormat:@" LIMIT %td,%td",start,num] arguments:nil];
+            
+            if (success) {
+                success(publicMusicArray);
+            }
+        }else{
+            
+            if (failed) {
+                
+                failed(@"当前无网络, 请检查您的网络状态");
+                
+            }
+        }
         
-        if (success) {
-            success(modelArray);
-        }
-    } failed:^(NSString * _Nonnull message) {
-        if (failed) {
-            failed(message);
-        }
-    }];
+    }else{
+    
+        NSDictionary *params =  FMParams(@"method":@"baidu.ting.diy.gedan",@"page_no":[NSString stringWithFormat:@"%ld",page],@"page_size":[NSString stringWithFormat:@"%td",num]);
+        
+        [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            
+            NSArray *countentArray = data[@"content"];
+            
+            NSMutableArray *modelArray = [NSMutableArray arrayWithCapacity:countentArray.count];
+            
+            for (NSDictionary *modelDictary in countentArray) {
+                FMPublicMusictablesModel *model = [FMPublicMusictablesModel modelWithJSON:modelDictary];
+                [model save];
+                [modelArray addObject:model];
+            }
+            
+            if (success) {
+                success(modelArray);
+            }
+        } failed:^(NSString * _Nonnull message) {
+            if (failed) {
+                failed(message);
+            }
+        }];
+    }
 }
 
 - (void)getSongListWithListid:(NSString *)listid
                       Success:(void (^)(id data))success
                        failed:(void (^)(NSString * message)) failed{
-    NSDictionary *params =   FMParams(@"method":@"baidu.ting.diy.gedanInfo",@"listid":listid);
     
-    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
         
-        if (success) {
-            success(data);
-        }
-    } failed:^(NSString * _Nonnull message) {
+         
+        
         if (failed) {
-            failed(message);
+            
+            failed(@"当前无网络, 请检查您的网络状态");
+            
         }
-    }];
+        
+    }else{
+    
+        NSDictionary *params =   FMParams(@"method":@"baidu.ting.diy.gedanInfo",@"listid":listid);
+        
+        [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            
+            if (success) {
+                success(data);
+            }
+        } failed:^(NSString * _Nonnull message) {
+            if (failed) {
+                failed(message);
+            }
+        }];
+    }
 }
 
 
@@ -171,26 +240,39 @@
             success(localModelArray.firstObject);
         }
     }else{
-        NSDictionary *params =   @{@"songIds":songId};
         
-        [[FMNetManager manager] getWithUrl:FMMusic params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+        if([DTSApplication application].status == CoreNetWorkStatusNone){
             
-            NSMutableArray *arrayM = data[@"data"][@"songList"];
+             
             
-            FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
-            
-            [musicEntity save];
-            
-            if (success) {
-                success(musicEntity);
-            }
-            
-        } failed:^(NSString * _Nonnull message) {
             if (failed) {
-                failed(message);
+                
+                failed(@"当前无网络, 请检查您的网络状态");
+                
             }
-        }];
-    
+            
+        }else{
+            
+            NSDictionary *params =   @{@"songIds":songId};
+            
+            [[FMNetManager manager] getWithUrl:FMMusic params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+                
+                NSMutableArray *arrayM = data[@"data"][@"songList"];
+                
+                FMMusicModel *musicEntity = [FMMusicModel modelWithJSON:arrayM.firstObject];
+                
+                [musicEntity save];
+                
+                if (success) {
+                    success(musicEntity);
+                }
+                
+            } failed:^(NSString * _Nonnull message) {
+                if (failed) {
+                    failed(message);
+                }
+            }];
+        }
     }
 }
 
@@ -198,37 +280,101 @@
                              type:(NSString *)type
                           Success:(void (^)(id data))success
                            failed:(void (^)(NSString * message)) failed{
-    NSDictionary *params =  FMParams(@"method":@"baidu.ting.billboard.billList",@"offset":@(offset),@"size":@"30",@"type":type);
     
-    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
         
-        if (success) {
-            success(data);
-        }
-    } failed:^(NSString * _Nonnull message) {
+         
+        
         if (failed) {
-            failed(message);
+            
+            failed(@"当前无网络, 请检查您的网络状态");
+            
         }
-    }];
-    
+        
+    }else{
+        NSDictionary *params =  FMParams(@"method":@"baidu.ting.billboard.billList",@"offset":@(offset),@"size":@"30",@"type":type);
+        
+        [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            
+            if (success) {
+                success(data);
+            }
+        } failed:^(NSString * _Nonnull message) {
+            if (failed) {
+                failed(message);
+            }
+        }];
+    }
 }
 
 - (void)downLoadMp3WithUrl:(NSString *)url
                Success:(void (^)(id data))success
                 failed:(void (^)(NSString * message)) failed
               progress:(void (^)(CGFloat progress))progress{
-    [[FMNetManager manager]downloadWithUrl:url success:^(id  _Nonnull data, NSString * _Nonnull message) {
-        if (success) {
-            success(data);
-        }
-    } failed:^(NSString * _Nonnull message) {
+    
+    if([DTSApplication application].status == CoreNetWorkStatusNone){
+        
+         
+        
         if (failed) {
-            failed(message);
+            
+            failed(@"当前无网络, 请检查您的网络状态");
+            
         }
-    } progress:^(CGFloat downloadProgress) {
-        if (progress) {
-            progress(downloadProgress);
+        
+    }else{
+    
+        [[FMNetManager manager]downloadWithUrl:url success:^(id  _Nonnull data, NSString * _Nonnull message) {
+            if (success) {
+                success(data);
+            }
+        } failed:^(NSString * _Nonnull message) {
+            if (failed) {
+                failed(message);
+            }
+        } progress:^(CGFloat downloadProgress) {
+            if (progress) {
+                progress(downloadProgress);
+            }
+        }];
+    }
+}
+
+- (void)deleteMusicModelAndMp3WithSongID:(NSString *)songID
+                                 Success:(void (^)(NSString * message))success
+                                  failed:(void (^)(NSString * message)) failed{
+    
+    NSArray *localModelArray = [FMMusicModel objectsWhere:[NSString stringWithFormat:@"WHERE songId='%@'",songID] arguments:nil];
+    
+    if (localModelArray && localModelArray.count>0) {
+        
+        FMMusicModel *musicModel = localModelArray.firstObject;
+
+        if (musicModel.fileSongLink && ![musicModel.fileSongLink isEqualToString:@""]) {
+            
+            BOOL del =  [[NSFileManager defaultManager] removeItemAtPath:musicModel.fileSongLink error:nil];
+            
+            NSLog(@"%@",del?@"删除成功":@"删除失败了");
+            
+            //无论删除是否成功 都要清除本地数据
+            musicModel.fileSongLink = nil;
+            [musicModel save];
+            
+            if (success) {
+                success(@"删除成功");
+            }
+        }else{
+            if (failed) {
+                failed(@"本地并未下载数据，删除失败");
+            }
         }
-    }];
+    }else{
+    
+        if (failed) {
+            failed(@"本地并未下载数据，删除失败");
+        }
+        
+    }
+
 }
 @end

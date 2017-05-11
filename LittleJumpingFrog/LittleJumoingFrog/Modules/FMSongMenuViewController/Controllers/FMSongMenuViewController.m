@@ -113,6 +113,7 @@ static NSString *reuseId = @"songMenu";
    
      @weakify(self)
     [[FMDataManager manager]getSongMenuWithPage:page Success:^(NSArray * modelArray) {
+        
        @strongify(self)
         if (modelArray.count > 0) {
             [array addObjectsFromArray:modelArray];
@@ -125,7 +126,10 @@ static NSString *reuseId = @"songMenu";
     } failed:^(NSString *message) {
         
         [GCDQueue executeInMainQueue:^{
-        
+            
+            @strongify(self)
+            
+            [self.songMenuTableView.mj_footer endRefreshing];
             [MBProgressHUD showError:message];
         
         }];

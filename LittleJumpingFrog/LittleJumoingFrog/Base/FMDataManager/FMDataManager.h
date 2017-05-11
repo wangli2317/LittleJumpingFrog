@@ -48,13 +48,20 @@
                         Success:(void (^)(FMMusicModel * musicEntity))success
                          failed:(void (^)(NSString * message)) failed;
 
+//排行榜单
 - (void)getRankSongListWithOffset:(NSInteger)offset
                              type:(NSString *)type
                           Success:(void (^)(id data))success
                            failed:(void (^)(NSString * message)) failed;
 
+//根据url下载mp3
 - (void)downLoadMp3WithUrl:(NSString *)url
                    Success:(void (^)(id data))success
                     failed:(void (^)(NSString * message)) failed
                   progress:(void (^)(CGFloat progress))progress;
+
+//根据songID删除本地数据和MP3
+- (void)deleteMusicModelAndMp3WithSongID:(NSString *)songID
+                                 Success:(void (^)(NSString * message))success
+                                  failed:(void (^)(NSString * message)) failed;
 @end

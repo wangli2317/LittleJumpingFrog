@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "FMConfigure.h"
-#import "DTSApplication.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
