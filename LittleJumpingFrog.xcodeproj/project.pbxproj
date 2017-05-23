@@ -96,13 +96,15 @@
 		328BEFE81EC43831002EB840 /* UIImage+DTSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 328BEFE71EC43831002EB840 /* UIImage+DTSLocation.m */; };
 		32C1EDB21EC43DA40019F01B /* NSMutableAttributedString+StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDA01EC43DA40019F01B /* NSMutableAttributedString+StringAttribute.m */; };
 		32C1EDB31EC43DA40019F01B /* NSString+Range.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDA21EC43DA40019F01B /* NSString+Range.m */; };
-		32C1EDB41EC43DA40019F01B /* UIFont+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDA41EC43DA40019F01B /* UIFont+Fonts.m */; };
 		32C1EDB51EC43DA40019F01B /* FMCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDA61EC43DA40019F01B /* FMCircleView.m */; };
 		32C1EDB61EC43DA40019F01B /* FMFontAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDA81EC43DA40019F01B /* FMFontAttribute.m */; };
 		32C1EDB71EC43DA40019F01B /* FMForegroundColorAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDAA1EC43DA40019F01B /* FMForegroundColorAttribute.m */; };
 		32C1EDB81EC43DA40019F01B /* FMInfiniteRotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDAC1EC43DA40019F01B /* FMInfiniteRotationView.m */; };
 		32C1EDB91EC43DA40019F01B /* FMStringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDAE1EC43DA40019F01B /* FMStringAttribute.m */; };
 		32C1EDBA1EC43DA40019F01B /* FMStringRangeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDB11EC43DA40019F01B /* FMStringRangeManager.m */; };
+		32C1EDBE1EC473810019F01B /* BackgroundLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDBD1EC473810019F01B /* BackgroundLineView.m */; };
+		32C1EDC11EC474430019F01B /* UIView+AnimationsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDC01EC474430019F01B /* UIView+AnimationsListViewController.m */; };
+		32C1EDC41EC474FD0019F01B /* UIView+GlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1EDC31EC474FD0019F01B /* UIView+GlowView.m */; };
 		32CDC25A1DADDB7E00FAEA33 /* FMMusicSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC2591DADDB7E00FAEA33 /* FMMusicSlider.m */; };
 		32CDC25C1DADDBDA00FAEA33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CDC25B1DADDBDA00FAEA33 /* Images.xcassets */; };
 		32CDC2621DAE33ED00FAEA33 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC2611DAE33ED00FAEA33 /* Track.m */; };
@@ -299,8 +301,6 @@
 		32C1EDA01EC43DA40019F01B /* NSMutableAttributedString+StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+StringAttribute.m"; sourceTree = "<group>"; };
 		32C1EDA11EC43DA40019F01B /* NSString+Range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Range.h"; sourceTree = "<group>"; };
 		32C1EDA21EC43DA40019F01B /* NSString+Range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Range.m"; sourceTree = "<group>"; };
-		32C1EDA31EC43DA40019F01B /* UIFont+Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Fonts.h"; sourceTree = "<group>"; };
-		32C1EDA41EC43DA40019F01B /* UIFont+Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Fonts.m"; sourceTree = "<group>"; };
 		32C1EDA51EC43DA40019F01B /* FMCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCircleView.h; sourceTree = "<group>"; };
 		32C1EDA61EC43DA40019F01B /* FMCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCircleView.m; sourceTree = "<group>"; };
 		32C1EDA71EC43DA40019F01B /* FMFontAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFontAttribute.h; sourceTree = "<group>"; };
@@ -314,6 +314,12 @@
 		32C1EDAF1EC43DA40019F01B /* FMStringAttributeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStringAttributeProtocol.h; sourceTree = "<group>"; };
 		32C1EDB01EC43DA40019F01B /* FMStringRangeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStringRangeManager.h; sourceTree = "<group>"; };
 		32C1EDB11EC43DA40019F01B /* FMStringRangeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMStringRangeManager.m; sourceTree = "<group>"; };
+		32C1EDBC1EC473810019F01B /* BackgroundLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLineView.h; sourceTree = "<group>"; };
+		32C1EDBD1EC473810019F01B /* BackgroundLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLineView.m; sourceTree = "<group>"; };
+		32C1EDBF1EC474430019F01B /* UIView+AnimationsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimationsListViewController.h"; sourceTree = "<group>"; };
+		32C1EDC01EC474430019F01B /* UIView+AnimationsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AnimationsListViewController.m"; sourceTree = "<group>"; };
+		32C1EDC21EC474FD0019F01B /* UIView+GlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GlowView.h"; sourceTree = "<group>"; };
+		32C1EDC31EC474FD0019F01B /* UIView+GlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GlowView.m"; sourceTree = "<group>"; };
 		32CDC2581DADDB7E00FAEA33 /* FMMusicSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMusicSlider.h; sourceTree = "<group>"; };
 		32CDC2591DADDB7E00FAEA33 /* FMMusicSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMusicSlider.m; sourceTree = "<group>"; };
 		32CDC25B1DADDBDA00FAEA33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -645,6 +651,10 @@
 				32061DFA1D9CC9FF00E07438 /* UIView+distribute.m */,
 				3207A9A41DB0B6A60057BE67 /* UIView+Animations.h */,
 				3207A9A51DB0B6A60057BE67 /* UIView+Animations.m */,
+				32C1EDBF1EC474430019F01B /* UIView+AnimationsListViewController.h */,
+				32C1EDC01EC474430019F01B /* UIView+AnimationsListViewController.m */,
+				32C1EDC21EC474FD0019F01B /* UIView+GlowView.h */,
+				32C1EDC31EC474FD0019F01B /* UIView+GlowView.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1051,6 +1061,7 @@
 		32C1ED9D1EC43DA40019F01B /* FMCircleView */ = {
 			isa = PBXGroup;
 			children = (
+				32C1EDBB1EC473740019F01B /* BackgroundLineView */,
 				32C1ED9E1EC43DA40019F01B /* Category */,
 				32C1EDA51EC43DA40019F01B /* FMCircleView.h */,
 				32C1EDA61EC43DA40019F01B /* FMCircleView.m */,
@@ -1076,10 +1087,17 @@
 				32C1EDA01EC43DA40019F01B /* NSMutableAttributedString+StringAttribute.m */,
 				32C1EDA11EC43DA40019F01B /* NSString+Range.h */,
 				32C1EDA21EC43DA40019F01B /* NSString+Range.m */,
-				32C1EDA31EC43DA40019F01B /* UIFont+Fonts.h */,
-				32C1EDA41EC43DA40019F01B /* UIFont+Fonts.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		32C1EDBB1EC473740019F01B /* BackgroundLineView */ = {
+			isa = PBXGroup;
+			children = (
+				32C1EDBC1EC473810019F01B /* BackgroundLineView.h */,
+				32C1EDBD1EC473810019F01B /* BackgroundLineView.m */,
+			);
+			path = BackgroundLineView;
 			sourceTree = "<group>";
 		};
 		32CDC25F1DAE33D400FAEA33 /* DOUAudioStreamer */ = {
@@ -1291,6 +1309,7 @@
 				32F574C51DA5E38E00F38CBE /* GCDQueue.m in Sources */,
 				32061DC01D9CB88A00E07438 /* UIView+AnimationProperty.m in Sources */,
 				32061DD51D9CBBF500E07438 /* FMPublicCellMenuItemButton.m in Sources */,
+				32C1EDC11EC474430019F01B /* UIView+AnimationsListViewController.m in Sources */,
 				3207A9AD1DB0BBDD0057BE67 /* FMMusicViewController.m in Sources */,
 				3239FD8B1DC078D500BDE9E2 /* FMRankListHeaderView.m in Sources */,
 				32F574C21DA5E34F00F38CBE /* GCDGroup.m in Sources */,
@@ -1304,6 +1323,7 @@
 				3207A9B01DB0C5090057BE67 /* NSString+Additions.m in Sources */,
 				32C1EDB21EC43DA40019F01B /* NSMutableAttributedString+StringAttribute.m in Sources */,
 				3207A9A61DB0B6A60057BE67 /* UIView+Animations.m in Sources */,
+				32C1EDBE1EC473810019F01B /* BackgroundLineView.m in Sources */,
 				32C1EDB91EC43DA40019F01B /* FMStringAttribute.m in Sources */,
 				32061D8A1D9BA63100E07438 /* FMSongMenuViewController.m in Sources */,
 				32061D911D9BAD3600E07438 /* FMPublicMusictablesModel.m in Sources */,
@@ -1323,7 +1343,6 @@
 				32061DC91D9CB9F200E07438 /* DismissAnimator.m in Sources */,
 				32061DE41D9CC37300E07438 /* FMLrcModel.m in Sources */,
 				32061D9B1D9CA6CA00E07438 /* FMSongListViewController.m in Sources */,
-				32C1EDB41EC43DA40019F01B /* UIFont+Fonts.m in Sources */,
 				325B27601EA9DFCF00AE83A3 /* DTSApplication.m in Sources */,
 				32061DA51D9CAE3200E07438 /* FMPublicHeadView.m in Sources */,
 				3207A9AA1DB0BB6E0057BE67 /* GVUserDefaults+Properties.m in Sources */,
@@ -1356,6 +1375,7 @@
 				32061DF21D9CC75100E07438 /* FMPlayMusicTool.m in Sources */,
 				328BEFE81EC43831002EB840 /* UIImage+DTSLocation.m in Sources */,
 				32C1EDB51EC43DA40019F01B /* FMCircleView.m in Sources */,
+				32C1EDC41EC474FD0019F01B /* UIView+GlowView.m in Sources */,
 				32061DFF1D9CCB3300E07438 /* FMPromptTool.m in Sources */,
 				3202C9141DA4961D00159226 /* UIFont+Fonts.m in Sources */,
 				325B275C1EA9DF8400AE83A3 /* NSObject+Utils.m in Sources */,

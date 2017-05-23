@@ -9,56 +9,69 @@
 #import "FMTabBarViewController.h"
 #import "CustomNavigationController.h"
 
-@interface FMTabBarViewController ()
+@interface FMTabBarViewController ()<UITabBarDelegate>
 @end
 
 @implementation FMTabBarViewController
 
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        [self setUpAllChildViewController];
-    }
-    return self;
+- (void)setup{
+    [super setup];
+    
 }
 
-
-- (NSArray *)setUpAllChildViewController{
-    // 1
-
-    NSMutableArray *mViewControllerArray = [NSMutableArray array];
+- (NSArray<CustomViewController *> *)viewControllers{
     
-    CustomViewController * SongMenuVC = [NSClassFromString(@"FMSongMenuViewController") new];
+    static NSMutableArray *_viewControllers = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _viewControllers = [NSMutableArray array];
+        
+         CustomViewController * SongMenuVC       = [NSClassFromString(@"FMSongMenuViewController") new];
+         CustomNavigationController *SongMenuNav = [[CustomNavigationController alloc]initWithRootViewController:SongMenuVC setNavigationBarHidden:YES];
+        
+         CustomViewController * localMusicVC     = [NSClassFromString(@"FMLocalMusicViewController") new];
+         CustomNavigationController *localMusicNav = [[CustomNavigationController alloc]initWithRootViewController:localMusicVC setNavigationBarHidden:YES];
+        
+         CustomViewController * searchVC         = [NSClassFromString(@"FMSearchViewController") new];
+         CustomNavigationController *searchNav = [[CustomNavigationController alloc]initWithRootViewController:searchVC setNavigationBarHidden:YES];
+        
+         CustomViewController * myViewController = [NSClassFromString(@"FMRankListViewController") new];
+         CustomNavigationController *myNav = [[CustomNavigationController alloc]initWithRootViewController:myViewController setNavigationBarHidden:YES];
+        
+        [_viewControllers addObjectsFromArray:@[SongMenuNav,localMusicNav,searchNav,myNav]];
+    });
     
-   [mViewControllerArray addObject:[self setUpOneChildViewController:SongMenuVC image:[UIImage imageNamed:@"songList_normal"] selectedImage:[UIImage imageNamed:@"songList_highLighted"] title:@"歌单"]];
-    
-    // 2xxxxxxxxx
-    CustomViewController * localMusicVC = [NSClassFromString(@"FMLocalMusicViewController") new];
-    [mViewControllerArray addObject:[self setUpOneChildViewController:localMusicVC image:[UIImage imageNamed:@"songNewList_normal"] selectedImage:[UIImage imageNamed:@"songNewList_highLighted"] title:@"本地"]];
-    
-    // 3
-    CustomViewController *searchVC =  [NSClassFromString(@"FMSearchViewController") new];;
-    [mViewControllerArray addObject:[self setUpOneChildViewController:searchVC image:[UIImage imageNamed:@"songSearch_normal"] selectedImage:[UIImage imageNamed:@"songSearch_highLighted"] title:@"搜索"]];    
-
-    // 4
-    CustomViewController * myViewController = [NSClassFromString(@"FMRankListViewController") new];
-    [mViewControllerArray addObject:[self setUpOneChildViewController:myViewController image:[UIImage imageNamed:@"songRank_normal"] selectedImage:[UIImage imageNamed:@"songRank_highLighted"] title:@"排行"]];
-    
-    return [mViewControllerArray copy];
+    return _viewControllers;
 }
 
-- (CustomNavigationController *)setUpOneChildViewController:(CustomViewController *)vc image:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title{
-    vc.title = title;
-    vc.tabBarItem.image = image;
-    vc.tabBarItem.selectedImage = selectedImage;
+- (void)buildItems{
+    [super buildItems];
     
+    UITabBarItem *SongMenuVCItem       = [[UITabBarItem alloc]initWithTitle:@"歌单"
+                                                                      image:[UIImage imageNamed:@"songList_normal"]
+                                                              selectedImage:[UIImage imageNamed:@"songList_highLighted"]];
+    UITabBarItem *localMusicVCItem     = [[UITabBarItem alloc]initWithTitle:@"本地"
+                                                                      image:[UIImage imageNamed:@"songNewList_normal"]
+                                                              selectedImage:[UIImage imageNamed:@"songNewList_highLighted"]];
+    UITabBarItem *searchVCItem         = [[UITabBarItem alloc]initWithTitle:@"搜索"
+                                                                      image:[UIImage imageNamed:@"songSearch_normal"]
+                                                              selectedImage:[UIImage imageNamed:@"songSearch_highLighted"]];
+    UITabBarItem *myViewControllerItem = [[UITabBarItem alloc]initWithTitle:@"排行"
+                                                                      image:[UIImage imageNamed:@"songRank_normal"]
+                                                              selectedImage:[UIImage imageNamed:@"songRank_highLighted"]];
 
-    CustomNavigationController *nav = [[CustomNavigationController alloc]initWithRootViewController:vc setNavigationBarHidden:NO];
+    UITabBar *tabbar                   = [[UITabBar alloc]initWithFrame:self.tabBarView.bounds];
+    tabbar.delegate                    = self;
+    tabbar.items                       = @[SongMenuVCItem,localMusicVCItem,searchVCItem,myViewControllerItem];
+
+    [self.tabBarView addSubview:tabbar];
     
-    nav.title = title;
-    
-    [self addChildViewController:nav];
-    return nav;
+//    [self tabBar:tabbar didSelectItem:SongMenuVCItem];
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSInteger index = [tabBar.items indexOfObject:item];
+    [self didSelectedIndex:index];
 }
 
 @end

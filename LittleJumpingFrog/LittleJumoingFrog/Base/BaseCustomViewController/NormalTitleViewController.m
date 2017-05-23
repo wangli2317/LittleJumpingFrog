@@ -8,7 +8,6 @@
 
 #import "NormalTitleViewController.h"
 #import "UIView+SetRect.h"
-#import "UIFont+Fonts.h"
 
 @interface NormalTitleViewController ()
 

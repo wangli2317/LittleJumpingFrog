@@ -10,9 +10,13 @@
 #import "FMPublicMusictablesModel.h"
 #import "FMSongMenuCollectionCell.h"
 #import "FMSongListViewController.h"
+#import "BackgroundLineView.h"
 
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+
+#import "UIView+AnimationsListViewController.h"
+#import "UIView+GlowView.h"
 
 @interface FMSongMenuViewController ()<UIViewControllerTransitioningDelegate,
                                        UINavigationControllerDelegate,
@@ -47,12 +51,13 @@ static NSString *reuseId = @"songMenu";
     [self setUpSongMenuTableView];
     [self rootViewControllerSetup];
     [self setUpRefreshFooter];
-   
+    
+    [self configureTitleView];
 }
 
 
 - (void)setUpSongMenuTableView{
-    self.songMenuTableView                     = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 49 - 64)];
+    self.songMenuTableView                     = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 49 - 64)];
     self.songMenuTableView.delegate            = self;
     self.songMenuTableView.dataSource          = self;
     self.songMenuTableView.rowHeight           = 250;
@@ -166,6 +171,51 @@ static NSString *reuseId = @"songMenu";
 }
 
 
+
+#pragma mark - Config TitleView.
+
+- (void)configureTitleView {
+    
+    BackgroundLineView *lineView = [BackgroundLineView backgroundLineViewWithFrame:CGRectMake(0, 0, self.width, 64)
+                                                                         lineWidth:4 lineGap:4
+                                                                         lineColor:[[UIColor blackColor] colorWithAlphaComponent:0.015]
+                                                                            rotate:M_PI_4];
+    [self.titleView addSubview:lineView];
+    
+    // Title label.
+    UILabel *headlinelabel          = [UIView animationsListViewControllerNormalHeadLabel];
+    UILabel *animationHeadLineLabel = [UIView animationsListViewControllerHeadLabel];
+    
+    // Title view.
+    UIView *titleView             = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 64)];
+    headlinelabel.center          = titleView.middlePoint;
+    animationHeadLineLabel.center = titleView.middlePoint;
+    [titleView addSubview:headlinelabel];
+    [titleView addSubview:animationHeadLineLabel];
+    [self.titleView addSubview:titleView];
+    
+    UIView *line         = [[UIView alloc] initWithFrame:CGRectMake(0, 63.5, self.width, 0.5f)];
+    line.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.25f];
+    [titleView addSubview:line];
+    
+    // Start glow.
+    animationHeadLineLabel.glowRadius            = @(2.f);
+    animationHeadLineLabel.glowOpacity           = @(1.f);
+    animationHeadLineLabel.glowColor             = [[UIColor colorWithRed:0.203  green:0.598  blue:0.859 alpha:1] colorWithAlphaComponent:0.95f];
+    
+    animationHeadLineLabel.glowDuration          = @(1.f);
+    animationHeadLineLabel.hideDuration          = @(3.f);
+    animationHeadLineLabel.glowAnimationDuration = @(2.f);
+    
+    [animationHeadLineLabel createGlowLayer];
+    [animationHeadLineLabel insertGlowLayer];
+    
+    [GCDQueue executeInMainQueue:^{
+        
+        [animationHeadLineLabel startGlowLoop];
+        
+    } afterDelaySecs:2.f];
+}
 
 #pragma mark - Push or Pop event.
 

@@ -46,7 +46,7 @@
     [indicator addGestureRecognizer:tap];
     
     self.navigationItem.rightBarButtonItem = nil;
-    [self.navigationBar addSubview:indicator];
+//    [self.navigationBar addSubview:indicator];
 }
 
 - (void)clickMusicIndicator{

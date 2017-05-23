@@ -25,5 +25,6 @@
 #import "MBProgressHUD+DTS.h"
 #import "UIView+SetRect.h"
 #import "UIImage+DTSLocation.h"
+#import "UIFont+Fonts.h"
 
 #endif /* LittleJumoingFrog_pch */

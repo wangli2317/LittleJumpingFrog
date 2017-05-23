@@ -16,7 +16,6 @@
 #import <NAKPlaybackIndicatorView.h>
 #import <POP.h>
 
-#import "UIFont+Fonts.h"
 
 @interface FMPublicTableViewCell ()
 @property (nonatomic ,weak  ) UIView                   *mainView;

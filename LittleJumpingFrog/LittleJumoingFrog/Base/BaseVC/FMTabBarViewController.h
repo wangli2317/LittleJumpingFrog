@@ -8,7 +8,7 @@
 
 #import "CustomTabBarViewController.h"
 
-@interface FMTabBarViewController : UITabBarController
+@interface FMTabBarViewController : CustomTabBarViewController
 
 @end
 

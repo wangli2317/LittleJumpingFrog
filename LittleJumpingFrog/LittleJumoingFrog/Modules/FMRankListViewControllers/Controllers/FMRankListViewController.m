@@ -53,9 +53,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FMRankListModel *list = self.rankListArray[indexPath.row];
-    FMRankListCell *cell = [FMRankListCell rankCellWithTableView:tableView songInfoArray:list.content];
-    cell.rankListImage = list.pic_s260;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    FMRankListCell *cell  = [FMRankListCell rankCellWithTableView:tableView songInfoArray:list.content];
+    cell.rankListImage    = list.pic_s260;
+    cell.selectionStyle   = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

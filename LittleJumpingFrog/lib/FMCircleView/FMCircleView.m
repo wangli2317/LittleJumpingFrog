@@ -11,7 +11,6 @@
 #import "FMForegroundColorAttribute.h"
 #import "FMFontAttribute.h"
 #import "NSMutableAttributedString+StringAttribute.h"
-#import "UIFont+Fonts.h"
 #import "FMInfiniteRotationView.h"
 
 @interface FMCircleView ()
