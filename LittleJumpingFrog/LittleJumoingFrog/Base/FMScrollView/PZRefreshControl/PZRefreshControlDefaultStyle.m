@@ -32,14 +32,14 @@
 
 + (NSArray *)tipsArray{
 
-    NSString * tipsString = @"双师课堂|双师课堂|双师课堂|双师课堂";
+    NSString * tipsString = @"LittleJumping|LittleJumping|LittleJumping|LittleJumping";
     NSArray * array = [tipsString componentsSeparatedByString:@"|"];
     
     return array;
 }
 + (NSArray *)keywordArray{
 
-    NSString * tipsString =  @"双|师|课|堂";
+    NSString * tipsString =  @"L|G|L|G";
     NSArray * array = [tipsString componentsSeparatedByString:@"|"];
     
     return array;

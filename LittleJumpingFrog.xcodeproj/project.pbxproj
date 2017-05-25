@@ -51,6 +51,11 @@
 		32092D921DB5E58D0092309A /* FMRankListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32092D911DB5E58D0092309A /* FMRankListModel.m */; };
 		32092D951DB5E63C0092309A /* FMRankListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32092D941DB5E63C0092309A /* FMRankListCell.m */; };
 		32092D981DB5E6CB0092309A /* FMRankSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32092D971DB5E6CB0092309A /* FMRankSongModel.m */; };
+		321E53351ED6D8BF00F40A63 /* FMSongMenuScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E53341ED6D8BF00F40A63 /* FMSongMenuScrollViewController.m */; };
+		321E53381ED6DBC800F40A63 /* FMSongMenuScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E53371ED6DBC800F40A63 /* FMSongMenuScrollViewCell.m */; };
+		321E533B1ED6DE2600F40A63 /* FMBaseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E533A1ED6DE2600F40A63 /* FMBaseDTO.m */; };
+		321E533E1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E533D1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.m */; };
+		321E53411ED6F08700F40A63 /* FMNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E53401ED6F08700F40A63 /* FMNetworkCache.m */; };
 		322972291DA7953A009A65A1 /* PresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 322972281DA7953A009A65A1 /* PresentingAnimator.m */; };
 		3229722D1DA79600009A65A1 /* Easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 3229722B1DA79600009A65A1 /* Easing.c */; };
 		322972301DA79639009A65A1 /* FMEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3229722F1DA79639009A65A1 /* FMEasing.m */; };
@@ -208,6 +213,16 @@
 		32092D941DB5E63C0092309A /* FMRankListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRankListCell.m; sourceTree = "<group>"; };
 		32092D961DB5E6CB0092309A /* FMRankSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMRankSongModel.h; sourceTree = "<group>"; };
 		32092D971DB5E6CB0092309A /* FMRankSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMRankSongModel.m; sourceTree = "<group>"; };
+		321E53331ED6D8BF00F40A63 /* FMSongMenuScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSongMenuScrollViewController.h; sourceTree = "<group>"; };
+		321E53341ED6D8BF00F40A63 /* FMSongMenuScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSongMenuScrollViewController.m; sourceTree = "<group>"; };
+		321E53361ED6DBC800F40A63 /* FMSongMenuScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSongMenuScrollViewCell.h; sourceTree = "<group>"; };
+		321E53371ED6DBC800F40A63 /* FMSongMenuScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSongMenuScrollViewCell.m; sourceTree = "<group>"; };
+		321E53391ED6DE2600F40A63 /* FMBaseDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMBaseDTO.h; sourceTree = "<group>"; };
+		321E533A1ED6DE2600F40A63 /* FMBaseDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMBaseDTO.m; sourceTree = "<group>"; };
+		321E533C1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPublicMusictablesScrollViewModel.h; sourceTree = "<group>"; };
+		321E533D1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPublicMusictablesScrollViewModel.m; sourceTree = "<group>"; };
+		321E533F1ED6F08700F40A63 /* FMNetworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNetworkCache.h; sourceTree = "<group>"; };
+		321E53401ED6F08700F40A63 /* FMNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNetworkCache.m; sourceTree = "<group>"; };
 		322972271DA7953A009A65A1 /* PresentingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingAnimator.h; sourceTree = "<group>"; };
 		322972281DA7953A009A65A1 /* PresentingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentingAnimator.m; sourceTree = "<group>"; };
 		3229722B1DA79600009A65A1 /* Easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Easing.c; sourceTree = "<group>"; };
@@ -501,6 +516,8 @@
 				32061D9A1D9CA6CA00E07438 /* FMSongListViewController.m */,
 				3207A9AB1DB0BBDD0057BE67 /* FMMusicViewController.h */,
 				3207A9AC1DB0BBDD0057BE67 /* FMMusicViewController.m */,
+				321E53331ED6D8BF00F40A63 /* FMSongMenuScrollViewController.h */,
+				321E53341ED6D8BF00F40A63 /* FMSongMenuScrollViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -520,6 +537,8 @@
 				32061DDA1D9CC04D00E07438 /* FMMusicModel.m */,
 				32061DE21D9CC37300E07438 /* FMLrcModel.h */,
 				32061DE31D9CC37300E07438 /* FMLrcModel.m */,
+				321E533C1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.h */,
+				321E533D1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -539,6 +558,8 @@
 				32061DD41D9CBBF500E07438 /* FMPublicCellMenuItemButton.m */,
 				32CDC2581DADDB7E00FAEA33 /* FMMusicSlider.h */,
 				32CDC2591DADDB7E00FAEA33 /* FMMusicSlider.m */,
+				321E53361ED6DBC800F40A63 /* FMSongMenuScrollViewCell.h */,
+				321E53371ED6DBC800F40A63 /* FMSongMenuScrollViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +569,8 @@
 			children = (
 				32061D8C1D9BAA5600E07438 /* FMNetManager.h */,
 				32061D8D1D9BAA5600E07438 /* FMNetManager.m */,
+				321E533F1ED6F08700F40A63 /* FMNetworkCache.h */,
+				321E53401ED6F08700F40A63 /* FMNetworkCache.m */,
 			);
 			path = FMNetManager;
 			sourceTree = "<group>";
@@ -1020,6 +1043,8 @@
 				327FC0AF1EB8975100BF025A /* FMScrollViewCell.m */,
 				327FC0B01EB8975100BF025A /* FMScrollViewManager.h */,
 				327FC0B11EB8975100BF025A /* FMScrollViewManager.m */,
+				321E53391ED6DE2600F40A63 /* FMBaseDTO.h */,
+				321E533A1ED6DE2600F40A63 /* FMBaseDTO.m */,
 				327FC0B21EB8975100BF025A /* PZRefreshControl */,
 			);
 			path = FMScrollView;
@@ -1311,7 +1336,9 @@
 				32061DD51D9CBBF500E07438 /* FMPublicCellMenuItemButton.m in Sources */,
 				32C1EDC11EC474430019F01B /* UIView+AnimationsListViewController.m in Sources */,
 				3207A9AD1DB0BBDD0057BE67 /* FMMusicViewController.m in Sources */,
+				321E533B1ED6DE2600F40A63 /* FMBaseDTO.m in Sources */,
 				3239FD8B1DC078D500BDE9E2 /* FMRankListHeaderView.m in Sources */,
+				321E53351ED6D8BF00F40A63 /* FMSongMenuScrollViewController.m in Sources */,
 				32F574C21DA5E34F00F38CBE /* GCDGroup.m in Sources */,
 				32092D981DB5E6CB0092309A /* FMRankSongModel.m in Sources */,
 				32061D871D9BA61A00E07438 /* FMSearchViewController.m in Sources */,
@@ -1344,6 +1371,7 @@
 				32061DE41D9CC37300E07438 /* FMLrcModel.m in Sources */,
 				32061D9B1D9CA6CA00E07438 /* FMSongListViewController.m in Sources */,
 				325B27601EA9DFCF00AE83A3 /* DTSApplication.m in Sources */,
+				321E53411ED6F08700F40A63 /* FMNetworkCache.m in Sources */,
 				32061DA51D9CAE3200E07438 /* FMPublicHeadView.m in Sources */,
 				3207A9AA1DB0BB6E0057BE67 /* GVUserDefaults+Properties.m in Sources */,
 				324B19C21DA78093003959FE /* CustomViewController.m in Sources */,
@@ -1353,6 +1381,7 @@
 				32061DCC1D9CBA4000E07438 /* FMPublicTableView.m in Sources */,
 				3239FD8E1DC07B7100BDE9E2 /* FMRankSongViewController.m in Sources */,
 				32C1EDB71EC43DA40019F01B /* FMForegroundColorAttribute.m in Sources */,
+				321E533E1ED6E18400F40A63 /* FMPublicMusictablesScrollViewModel.m in Sources */,
 				325B277F1EA9F01F00AE83A3 /* NSDictionary+DTSJson.m in Sources */,
 				327FC0C61EB89A9A00BF025A /* NSDate+Utils.m in Sources */,
 				3268253B1D9B7C7D0049774C /* AppDelegate.m in Sources */,
@@ -1380,6 +1409,7 @@
 				3202C9141DA4961D00159226 /* UIFont+Fonts.m in Sources */,
 				325B275C1EA9DF8400AE83A3 /* NSObject+Utils.m in Sources */,
 				32061D811D9BA5B300E07438 /* FMLocalMusicViewController.m in Sources */,
+				321E53381ED6DBC800F40A63 /* FMSongMenuScrollViewCell.m in Sources */,
 				327FC0BF1EB8975100BF025A /* PZPathAnimCircleRefreshControl.m in Sources */,
 				3229722D1DA79600009A65A1 /* Easing.c in Sources */,
 				32C1EDB31EC43DA40019F01B /* NSString+Range.m in Sources */,

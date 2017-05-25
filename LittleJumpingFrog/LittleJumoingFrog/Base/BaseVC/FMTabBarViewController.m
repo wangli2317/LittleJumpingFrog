@@ -26,17 +26,25 @@
     dispatch_once(&onceToken, ^{
         _viewControllers = [NSMutableArray array];
         
-         CustomViewController * SongMenuVC       = [NSClassFromString(@"FMSongMenuViewController") new];
-         CustomNavigationController *SongMenuNav = [[CustomNavigationController alloc]initWithRootViewController:SongMenuVC setNavigationBarHidden:YES];
-        
-         CustomViewController * localMusicVC     = [NSClassFromString(@"FMLocalMusicViewController") new];
-         CustomNavigationController *localMusicNav = [[CustomNavigationController alloc]initWithRootViewController:localMusicVC setNavigationBarHidden:YES];
-        
-         CustomViewController * searchVC         = [NSClassFromString(@"FMSearchViewController") new];
-         CustomNavigationController *searchNav = [[CustomNavigationController alloc]initWithRootViewController:searchVC setNavigationBarHidden:YES];
-        
-         CustomViewController * myViewController = [NSClassFromString(@"FMRankListViewController") new];
-         CustomNavigationController *myNav = [[CustomNavigationController alloc]initWithRootViewController:myViewController setNavigationBarHidden:YES];
+         CustomViewController * SongMenuVC         = [[DTSViewManager manager]getInstanceFromName:@"FMSongMenuViewController"];
+
+         CustomNavigationController *SongMenuNav   = [[CustomNavigationController alloc]initWithRootViewController:SongMenuVC
+                                                                                          setNavigationBarHidden:YES];
+
+         CustomViewController * localMusicVC       = [[DTSViewManager manager]getInstanceFromName:@"FMLocalMusicViewController"];
+
+         CustomNavigationController *localMusicNav = [[CustomNavigationController alloc]initWithRootViewController:localMusicVC
+                                                                                            setNavigationBarHidden:YES];
+
+         CustomViewController * searchVC           = [[DTSViewManager manager]getInstanceFromName:@"FMSearchViewController"];
+
+         CustomNavigationController *searchNav     = [[CustomNavigationController alloc]initWithRootViewController:searchVC
+                                                                                        setNavigationBarHidden:YES];
+
+         CustomViewController * myViewController   = [[DTSViewManager manager]getInstanceFromName:@"FMRankListViewController"];
+
+         CustomNavigationController *myNav         = [[CustomNavigationController alloc]initWithRootViewController:myViewController
+                                                                                    setNavigationBarHidden:YES];
         
         [_viewControllers addObjectsFromArray:@[SongMenuNav,localMusicNav,searchNav,myNav]];
     });
@@ -50,15 +58,19 @@
     UITabBarItem *SongMenuVCItem       = [[UITabBarItem alloc]initWithTitle:@"歌单"
                                                                       image:[UIImage imageNamed:@"songList_normal"]
                                                               selectedImage:[UIImage imageNamed:@"songList_highLighted"]];
+    
     UITabBarItem *localMusicVCItem     = [[UITabBarItem alloc]initWithTitle:@"本地"
                                                                       image:[UIImage imageNamed:@"songNewList_normal"]
                                                               selectedImage:[UIImage imageNamed:@"songNewList_highLighted"]];
+    
     UITabBarItem *searchVCItem         = [[UITabBarItem alloc]initWithTitle:@"搜索"
                                                                       image:[UIImage imageNamed:@"songSearch_normal"]
                                                               selectedImage:[UIImage imageNamed:@"songSearch_highLighted"]];
+    
     UITabBarItem *myViewControllerItem = [[UITabBarItem alloc]initWithTitle:@"排行"
                                                                       image:[UIImage imageNamed:@"songRank_normal"]
                                                               selectedImage:[UIImage imageNamed:@"songRank_highLighted"]];
+    
 
     UITabBar *tabbar                   = [[UITabBar alloc]initWithFrame:self.tabBarView.bounds];
     tabbar.delegate                    = self;
@@ -66,7 +78,6 @@
 
     [self.tabBarView addSubview:tabbar];
     
-//    [self tabBar:tabbar didSelectItem:SongMenuVCItem];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{

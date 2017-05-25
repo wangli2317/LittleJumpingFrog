@@ -9,6 +9,7 @@
 #import "FMScrollViewManager.h"
 #import "FMDataManager.h"
 #import "NSDate+Utils.h"
+#import "FMBaseDTO.h"
 
 @interface FMScrollViewManager () <FMScrollViewDelegate, FMScrollViewDataSource>
 

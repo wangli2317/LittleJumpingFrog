@@ -13,12 +13,15 @@
 
 #import "FMPublicHeadView.h"
 #import "FMPublicTableView.h"
+#import "BackgroundLineView.h"
 
 #import "FMPublicSonglistModel.h"
 #import "FMPublicMusictablesModel.h"
 #import "FMPublicSongDetailModel.h"
 
 #import "UIView+Animations.h"
+#import "UIView+AnimationsListViewController.h"
+#import "UIView+GlowView.h"
 
 @interface FMSongListViewController ()<FMPublicTableViewDelegate>
 @property (nonatomic ,strong) FMPublicTableView *tableView;
@@ -39,6 +42,8 @@
     
     //背景图片
     [self setUpBackGroundView];
+    
+    [self configureTitleView];
 
     self.headView = [[FMPublicHeadView alloc] initWithFullHead:YES];
     
@@ -48,7 +53,7 @@
     
     [self.view addSubview:self.tableView];
     
- 
+    
     //加载数据
     [self loadSongList];
     
@@ -99,11 +104,12 @@
             
         }
         
+        @weakify(self)
         
         [GCDQueue executeInMainQueue:^{
+            @strongify(self)
             
-            
-            self.tableView.frame = CGRectMake(0,0, getScreenWidth(), getScreenHeight());
+            self.tableView.frame = CGRectMake(0, CGRectGetMaxY(self.titleView.frame), getScreenWidth(), getScreenHeight() - 49 - 64);
             self.headView.frame = CGRectMake(0, 0, getScreenWidth(), getScreenWidth() * 0.5 + 60);
             self.tableView.tableHeaderView = self.headView;
             
@@ -128,6 +134,64 @@
     [nav clickMusicCell];
 }
 
+
+#pragma mark - Config TitleView.
+
+- (void)configureTitleView {
+    
+    BackgroundLineView *lineView = [BackgroundLineView backgroundLineViewWithFrame:CGRectMake(0, 0, self.width, 64)
+                                                                         lineWidth:4 lineGap:4
+                                                                         lineColor:[[UIColor blackColor] colorWithAlphaComponent:0.015]
+                                                                            rotate:M_PI_4];
+    [self.titleView addSubview:lineView];
+    
+    // Title label.
+    UILabel *headlinelabel          = [UIView animationsListViewControllerNormalHeadLabel];
+    UILabel *animationHeadLineLabel = [UIView animationsListViewControllerHeadLabel];
+    
+    // Title view.
+    UIView *titleView             = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 64)];
+    [titleView addSubview:headlinelabel];
+    [titleView addSubview:animationHeadLineLabel];
+    [self.titleView addSubview:titleView];
+    
+    UIView *line         = [[UIView alloc] initWithFrame:CGRectMake(0, 63.5, self.width, 0.5f)];
+    line.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.25f];
+    [titleView addSubview:line];
+    
+    // Start glow.
+    animationHeadLineLabel.glowRadius            = @(2.f);
+    animationHeadLineLabel.glowOpacity           = @(1.f);
+    animationHeadLineLabel.glowColor             = [[UIColor colorWithRed:0.203  green:0.598  blue:0.859 alpha:1] colorWithAlphaComponent:0.95f];
+    
+    animationHeadLineLabel.glowDuration          = @(1.f);
+    animationHeadLineLabel.hideDuration          = @(3.f);
+    animationHeadLineLabel.glowAnimationDuration = @(2.f);
+    
+    [animationHeadLineLabel createGlowLayer];
+    [animationHeadLineLabel insertGlowLayer];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"explain_icon_blue-return"] forState:UIControlStateNormal];
+    [self.titleView addSubview:backButton];
+    @weakify(self)
+    [backButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @strongify(self)
+        [self popViewControllerAnimated:YES];
+    }];
+    backButton.frame = CGRectMake(0, 20, 44, 44);
+    
+    headlinelabel.center          = CGPointMake(titleView.centerX, backButton.centerY);
+    animationHeadLineLabel.center = CGPointMake(titleView.centerX, backButton.centerY);
+    
+    [GCDQueue executeInMainQueue:^{
+        
+        [animationHeadLineLabel startGlowLoop];
+        
+    } afterDelaySecs:2.f];
+}
+
+
 - (NSMutableArray *)songListArrayM{
     if (!_songListArrayM) {
         _songListArrayM = [NSMutableArray array];
@@ -141,6 +205,7 @@
     }
     return _songIdsArrayM;
 }
+
 
 
 

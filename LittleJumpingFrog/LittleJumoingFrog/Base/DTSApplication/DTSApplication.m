@@ -35,7 +35,7 @@
         [instance setLang];
         
         [[UIButton appearance] setExclusiveTouch:YES];
-        
+        [[UIView appearance] setExclusiveTouch:YES];
     });
     
     return instance;

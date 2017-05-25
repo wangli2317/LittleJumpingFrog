@@ -12,6 +12,7 @@
 #import "PZPathAnimCircleRefreshControl.h"
 #import "PZRefreshControlDefaultStyle.h"
 #import "PZRefreshNormalControl.h"
+#import "FMBaseDTO.h"
 
 #define DEFAULT_PADDING 10.0
 #define DEFAULT_COLWIDTH 10.0
@@ -309,7 +310,7 @@ static inline NSInteger String2Index(NSString *key) {
 //        FMBaseDTO * item = [self.items objectAtIndex:k];
 //        Class cls = [self classForCellOfObject:item];
         
-        NSDictionary *item = [self.items objectAtIndex:k];
+        FMBaseDTO *item = [self.items objectAtIndex:k];
         Class cls = [self classForCellOfObject:item];
         
         //CGFloat xOffset = [self getBrickXOffsetFromClass:cls andObject:item];
@@ -780,9 +781,9 @@ static inline NSInteger String2Index(NSString *key) {
 }
 
 
-- (Class)classForCellOfObject:(NSDictionary *)object
+- (Class)classForCellOfObject:(FMBaseDTO *)object
 {
-    NSString *type = [object objectForKey:@"FM_CLASSTYPE"];
+    NSString *type = object.FM_CLASSTYPE;
 //    NSString *type = object.FM_CLASSTYPE;
     if(!type||type.isEmpty){
         type = _defaultClassType;

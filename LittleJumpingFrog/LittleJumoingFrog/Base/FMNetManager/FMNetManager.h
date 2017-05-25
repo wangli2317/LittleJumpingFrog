@@ -21,12 +21,29 @@ NS_ASSUME_NONNULL_BEGIN
            success:(void (^)(id data,NSString * message))success
             failed:(void (^)(NSString* message))failed;
 
+/**使用AFN进行GET请求,自动缓存*/
+- (__kindof NSURLSessionTask *)getWithUrl:(NSString *)URL
+                                   params:(NSDictionary *)params
+                            responseCache:(void (^)(id data))responseCache
+                                  success:(void (^)(id data))success
+                                   failed:(void (^)(NSString* message))failed;
+
 /**使用AFN进行post请求*/
 - (void)postWithUrl:(NSString*)urlStr
              params:(NSDictionary *)params
             success:(void (^)(id data,NSString * message))success
              failed:(void (^)(NSString* message))failed;
 
+
+/**POST请求,自动缓存*/
+- (__kindof NSURLSessionTask *)postWithUrl:(NSString *)URL
+                                    params:(NSDictionary *)params
+                             responseCache:(void (^)(id dat))responseCache
+                                   success:(void (^)(id data))success
+                                    failed:(void (^)(NSString* message))failed;
+
+/**取消指定URL的HTTP请求*/
+- (void)cancelRequestWithURL:(NSString *)URL;
 
 /**取消所有网络请求*/
 - (void)cancelAllRequest;

@@ -10,6 +10,7 @@
 #import "FMNetManager.h"
 #import "FMMusicModel.h"
 #import "FMPublicMusictablesModel.h"
+#import "FMPublicMusictablesScrollViewModel.h"
 
 @interface FMDataManager ()
 
@@ -144,6 +145,37 @@
             }
         }];
     }
+}
+
+- (void) fetchSongMenuByPage:(NSInteger)page otherParams:(NSMutableDictionary *)otherParams success:(void (^)(id data))success failed:(void (^)(NSString * message)) failed{
+
+    NSInteger num = 30;
+    
+    NSDictionary *params =  FMParams(@"method":@"baidu.ting.diy.gedan",@"page_no":[NSString stringWithFormat:@"%ld",page],@"page_size":[NSString stringWithFormat:@"%td",num]);
+    
+    [[FMNetManager manager] getWithUrl:FMUrl params:params success:^(id  _Nonnull data, NSString * _Nonnull message) {
+        
+        NSArray *countentArray = data[@"content"];
+        
+        NSArray *modelArray = [NSArray modelArrayWithClass:[FMPublicMusictablesScrollViewModel class] json:countentArray];
+        
+        
+        
+//        for (NSDictionary *modelDictary in countentArray) {
+//            FMPublicMusictablesScrollViewModel *model = [FMPublicMusictablesScrollViewModel modelWithJSON:modelDictary];
+//            model.FM_CLASSTYPE = @"FMSongMenuScrollViewCell";
+//            [modelArray addObject:model];
+//        }
+        
+        if (success) {
+            success(modelArray);
+        }
+    } failed:^(NSString * _Nonnull message) {
+        if (failed) {
+            failed(message);
+        }
+    }];
+
 }
 
 - (void)getSongMenuWithPage:(NSInteger)page
